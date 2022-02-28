@@ -5,20 +5,18 @@
     {% if brand_list %}
         <div class="wrap-brand">
             <h1 class="title">취급 브랜드</h1>
-            <div class="brand-list">
-                <ul>
-                    {% for brand in brand_list %}
-                        <li>
-                            <a href="#">
-                                <div class="brand">
-                                    <img src={% get_static_prefix %}{{brand.img_path}}>
-                                    <h2 class="name">{{brand.name}}</h2>
-                                </div>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+            <ul class="brand-list">
+                {% for brand in brand_list %}
+                    <li>
+                        <a href="#">
+                            <div class="brand">
+                                <img class="logo" src={% get_static_prefix %}{{brand.img_path}}>
+                                <h2 class="name">{{brand.name}}</h2>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     {% endif %}
 {% endblock content %}
