@@ -22,7 +22,6 @@ class Menu(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     category = models.CharField(max_length=80)
     img_path = models.CharField(max_length=255)
-    count = models.IntegerField()
     price = models.IntegerField()
 
     def __str__(self):
