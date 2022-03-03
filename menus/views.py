@@ -1,11 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import (
-    RedirectView, ListView
-)
+from django.views.generic import ListView
 from menus.models import Brand, Gifticon, Menu
 
-class IndexRedirectView(RedirectView):
-    pattern_name = 'brand-list'
+def index(request):
+    return render(request, 'menus/index.html')
 
 class BrandListView(ListView):
     model = Brand
