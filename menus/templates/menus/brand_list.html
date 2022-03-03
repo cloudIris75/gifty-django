@@ -4,14 +4,14 @@
 {% block content %}
     {% if brand_list %}
         <div class="wrap-brand">
-            <h1 class="title">취급 브랜드</h1>
+            <h2 class="title">취급 브랜드</h2>
             <ul class="brand-list">
                 {% for brand in brand_list %}
                     <li>
                         <a href="#">
                             <div class="brand">
                                 <img class="logo" src={% get_static_prefix %}{{brand.img_path}}>
-                                <h2 class="name">{{brand.name}}</h2>
+                                <h3 class="name">{{brand.name}}</h3>
                             </div>
                         </a>
                     </li>
