@@ -4,6 +4,22 @@
 {% block content %}
     {% if menu_list %}
         <div class="wrap">
+            <form>
+                <select name="brand">
+                    <option value="all">전체</option>
+                    <option value="starbucks">스타벅스</option>
+                    <option value="twosome">투썸플레이스</option>
+                    <option value="ediya">이디야커피</option>
+                    <option value="paris">파리바게뜨</option>
+                </select>
+            </form>
+            <ul class="category">
+                <li><a href="#">음료</a></li>
+                <li class="bar">/</li>
+                <li><a href="#">푸드</a></li>
+                <li class="bar">/</li>
+                <li><a href="#">상품</a></li>
+            </ul>
             <ul class="list">
                 {% for menu in menu_list %}
                     <li>
@@ -16,6 +32,21 @@
                     </li>
                 {% endfor %}
             </ul>
+            <div class="paginator">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="first">처음</a>
+                    <a href="?page={{page_obj.previous_page_number}}" class="prev">이전</a>
+                {% endif %}
+
+                <span class="page">
+                    <p>{{page_obj.number}} / {{page_obj.paginator.num_pages}}</p>
+                </span>
+            
+                {% if page_obj.has_next %}
+                    <a href="?page={{page_obj.next_page_number}}" class="next">다음</a>
+                    <a href="?page={{page_obj.paginator.num_pages}}" class="last">마지막</a>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 {% endblock content %}

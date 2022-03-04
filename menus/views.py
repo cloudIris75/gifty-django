@@ -8,7 +8,6 @@ def index(request):
 class BrandListView(ListView):
     model = Brand
     ordering = ['id']
-    paginate_by = 6
 
 class MenuListView(ListView):
     model = Menu

@@ -43,7 +43,7 @@ body {
     margin: 0 1vw;
 }
 
-/* list */
+/* brand_list */
 .wrap {
     display: flex;
     flex-direction: column;
@@ -55,21 +55,66 @@ body {
 }
 
 .list {
+    width: 28.5em;
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: flex-start;
 }
 
 .item {
-    padding: 3vh 3vw;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .image {
-    width: 120px;
-    height: 120px;
+    width: 7.5em;
+    height: 7.5em;
     border-radius: 50%;
     margin-bottom: 1vh;
+}
+
+.paginator {
+    width: 100vw;
+    margin: 3vh 0;
+    text-align: center;
+}
+
+.paginator a {
+    display: inline-block;
+}
+
+.paginator .first {
+    margin-right: 1vw;
+}
+
+.paginator .last {
+    margin-left: 1vw;
+}
+
+.paginator span {
+    display: inline-block;
+}
+
+.paginator span p {
+    margin: 0 1vw;
+}
+
+/* menu_list */
+.category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+form {
+    margin: 3vh 0;
+}
+
+.bar {
+    margin: 0 1vw;
 }
