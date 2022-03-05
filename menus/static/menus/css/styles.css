@@ -78,6 +78,14 @@ body {
     margin-bottom: 1vh;
 }
 
+.name {
+    font-size: 0.74em;
+}
+
+.price {
+    font-size: 0.8em;
+}
+
 .paginator {
     width: 100vw;
     margin: 3vh 0;
@@ -117,4 +125,14 @@ form {
 
 .bar {
     margin: 0 1vw;
+}
+
+.menu-list {
+    width: 37.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: flex-start;
 }
