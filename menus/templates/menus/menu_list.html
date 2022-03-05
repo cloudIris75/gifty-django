@@ -2,24 +2,31 @@
 {% load static %}
 
 {% block content %}
-    {% if menu_list %}
-        <div class="wrap">
-            <form>
-                <select name="brand" onchange="if(this.value) location.href=(this.value);">
-                    <option value={% url 'menu-list' %}>전체</option>
-                    <option value={% url 'menu-brand' 1 %}>스타벅스</option>
-                    <option value={% url 'menu-brand' 2 %}>투썸플레이스</option>
-                    <option value="ediya">이디야커피</option>
-                    <option value="paris">파리바게뜨</option>
-                </select>
-            </form>
-            <ul class="category">
-                <li><a href="#">음료</a></li>
-                <li class="bar">/</li>
-                <li><a href="#">푸드</a></li>
-                <li class="bar">/</li>
-                <li><a href="#">상품</a></li>
-            </ul>
+    <div class="wrap">
+        <form>
+            <select name="brand" onchange="if(this.value) location.href=(this.value);">
+                <option value={% url 'menu-list' %}>전체</option>
+                {% for brand in brands %}
+                    {% if id %}
+                        {% if brand.id == id %}
+                            <option value={% url 'menu-brand' brand.id %} selected>{{brand.name}}</option>
+                        {% else %}
+                            <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
+                        {% endif %}
+                    {% else %}
+                        <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </form>
+        <ul class="category">
+            <li><a href="#">음료</a></li>
+            <li class="bar">/</li>
+            <li><a href="#">푸드</a></li>
+            <li class="bar">/</li>
+            <li><a href="#">상품</a></li>
+        </ul>
+        {% if menu_list %}
             <ul class="list">
                 {% for menu in menu_list %}
                     <li>
@@ -45,6 +52,6 @@
                     <a href="?page={{page_obj.paginator.num_pages}}" class="last">마지막</a>
                 {% endif %}
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
+    </div>
 {% endblock content %}
