@@ -5,10 +5,10 @@
     {% if menu_list %}
         <div class="wrap">
             <form>
-                <select name="brand">
-                    <option value="all">전체</option>
-                    <option value="starbucks">스타벅스</option>
-                    <option value="twosome">투썸플레이스</option>
+                <select name="brand" onchange="if(this.value) location.href=(this.value);">
+                    <option value={% url 'menu-list' %}>전체</option>
+                    <option value={% url 'menu-brand' 1 %}>스타벅스</option>
+                    <option value={% url 'menu-brand' 2 %}>투썸플레이스</option>
                     <option value="ediya">이디야커피</option>
                     <option value="paris">파리바게뜨</option>
                 </select>
