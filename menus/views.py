@@ -14,5 +14,9 @@ class MenuListView(ListView):
     ordering = ['id']
     paginate_by = 6
 
+# def menu_brand(request, pk):
+#     menu = Menu.objects.get(brand=pk)
+#     return render(request, 'menus/menu_list.html', {'menu': menu})
+
 def calculator(request):
     return render(request, 'menus/calculator.html')
