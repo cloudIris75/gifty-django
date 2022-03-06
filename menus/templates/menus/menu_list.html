@@ -20,11 +20,23 @@
             </select>
         </form>
         <ul class="category">
-            <li><a href="#">음료</a></li>
-            <li class="bar">/</li>
-            <li><a href="#">푸드</a></li>
-            <li class="bar">/</li>
-            <li><a href="#">상품</a></li>
+            {% if id %}
+                {% for brand in brands %}
+                    {% if id == brand.id %}
+                        <li><a href={% url 'menu-category' id=brand.id ct='음료' %}>음료</a></li>
+                        <li class="bar">/</li>
+                        <li><a href={% url 'menu-category' id=brand.id ct='푸드' %}>푸드</a></li>
+                        <li class="bar">/</li>
+                        <li><a href={% url 'menu-category' id=brand.id ct='상품' %}>상품</a></li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <!-- <li><a href="#">음료</a></li>
+                <li class="bar">/</li>
+                <li><a href="#">푸드</a></li>
+                <li class="bar">/</li>
+                <li><a href="#">상품</a></li> -->
+            {% endif %}
         </ul>
         {% if menu_list %}
             <ul class="list">
