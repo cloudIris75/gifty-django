@@ -6,12 +6,17 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=1.1>
+        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=1>
         <title>Gifticon Calculator</title>
     </head>
     <body>
         <div class="header">
-            <h2 class="logo"><a href={% url 'index' %}>기프티콘 계산기</a></h2>
+            <a href={% url 'index' %}>
+                <div class="logo">
+                    <img src={% static 'menus/images/starbucks/logo.png' %}>
+                    <h2>기프티콘 계산기</h2>
+                </div>
+            </a>
             <ul class="menu">
                 <li><a href={% url 'brand-list' %}>브랜드</a></li>
                 <li><a href={% url 'menu-list' %}>메뉴</a></li>

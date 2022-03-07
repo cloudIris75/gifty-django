@@ -3,41 +3,44 @@
 
 {% block content %}
     <div class="wrap">
-        <form>
-            <select name="brand" onchange="if(this.value) location.href=(this.value);">
-                <option value={% url 'menu-list' %}>전체</option>
-                {% for brand in brands %}
-                    {% if id %}
-                        {% if brand.id == id %}
-                            <option value={% url 'menu-brand' brand.id %} selected>{{brand.name}}</option>
+        <div class="form">
+            <form>
+                <select name="brand" onchange="if(this.value) location.href=(this.value);">
+                    <option value={% url 'menu-list' %}>브랜드</option>
+                    {% for brand in brands %}
+                        {% if id %}
+                            {% if brand.id == id %}
+                                <option value={% url 'menu-brand' brand.id %} selected>{{brand.name}}</option>
+                            {% else %}
+                                <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
+                            {% endif %}
                         {% else %}
                             <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
                         {% endif %}
-                    {% else %}
-                        <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-        </form>
-        <ul class="category">
+                    {% endfor %}
+                </select>
+            </form>
             {% if id %}
-                {% for brand in brands %}
-                    {% if id == brand.id %}
-                        <li><a href={% url 'menu-category' id=brand.id ct='음료' %}>음료</a></li>
-                        <li class="bar">/</li>
-                        <li><a href={% url 'menu-category' id=brand.id ct='푸드' %}>푸드</a></li>
-                        <li class="bar">/</li>
-                        <li><a href={% url 'menu-category' id=brand.id ct='상품' %}>상품</a></li>
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                <!-- <li><a href="#">음료</a></li>
-                <li class="bar">/</li>
-                <li><a href="#">푸드</a></li>
-                <li class="bar">/</li>
-                <li><a href="#">상품</a></li> -->
+                <form>
+                    <select name="category" onchange="if(this.value) location.href=(this.value);">
+                        <option value={% url 'menu-brand' id %}>카테고리</option>
+                        {% with '음료 푸드 상품' as list %}
+                            {% for category in list.split %}
+                                {% if ct %}
+                                    {% if category == ct %}
+                                        <option value={% url 'menu-category' id=id ct=category %} selected>{{category}}</option>
+                                    {% else %}
+                                        <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                </form>
             {% endif %}
-        </ul>
+        </div>
         {% if menu_list %}
             <ul class="list">
                 {% for menu in menu_list %}
