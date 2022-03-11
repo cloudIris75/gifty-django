@@ -1,11 +1,23 @@
+:root {
+    /* Size */
+    --header-size: 4.063em;
+    --footer-size: 5.938em;
+    --border-size: 0.2em;
+    --header-img-size: 2.5em;
+    --index-img-size: 7.5em;
+
+    /* Color */
+    --border-color: #9EADBA;
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 html {
-    width: 17.5em;
-    height: 37.5em;
+    width: 23.438em;
+    height: 50em;
 }
 
 h1, h2, h3, p, a, ul, li {
@@ -27,7 +39,6 @@ img {
 body {
     height: auto;
     min-height: 100%;
-    padding-bottom: 5.625em;
     display: flex;
     align-items: center;
 }
@@ -36,35 +47,35 @@ header {
     position: fixed;
     left: 0em;
     top: 0em;
-    height: 4.375em;
+    height: var(--header-size);
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: white;
     border-bottom-style: solid;
-    border-bottom-width: 0.2em;
-    border-color: #E0E0E0;
+    border-bottom-width: var(--border-size);
+    border-color: var(--border-color);
 }
 
 header .menu {
-    width: 2em;
-    height: 2em;
+    width: var(--header-img-size);
+    height: var(--header-img-size);
     border-radius: 50%;
     margin-left: 1em;
 }
 
 header .logo {
-    width: 2em;
-    height: 2em;
+    width: var(--header-img-size);
+    height: var(--header-img-size);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
 header .logo img {
-    width: 2em;
-    height: 2em;
+    width: var(--header-img-size);
+    height: var(--header-img-size);
     border-radius: 50%;
 }
 
@@ -73,17 +84,21 @@ header .logo img {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 4.375em 1em;
+    margin: var(--header-size) 1em var(--footer-size) 1em;
+}
+
+.introduction p {
+    font-size: 1em;
 }
 
 .introduction img {
-    width: 5.625em;
-    height: 5.625em;
+    width: var(--index-img-size);
+    height: var(--index-img-size);
     border-radius: 50%;
 }
 
 footer {
-    height: 4.375em;
+    height: var(--footer-size);
     width: 100%;
     position: fixed;
     left: 0em;
@@ -93,8 +108,8 @@ footer {
     justify-content: space-around;
     background-color: white;
     border-top-style: solid;
-    border-top-width: 0.2em;
-    border-color: #E0E0E0;
+    border-top-width: var(--border-size);
+    border-color: var(--border-color);
 }
 
 footer .contact {
@@ -104,7 +119,8 @@ footer .contact {
 }
 
 footer .contact .title {
-    font-size: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 footer .contact ul {
@@ -114,11 +130,11 @@ footer .contact ul {
 }
 
 footer .contact ul li {
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
 
 footer p {
-    font-size: 0.5em;
+    font-size: 0.8em;
     text-align: center;
     margin-bottom: 1em;
 }
