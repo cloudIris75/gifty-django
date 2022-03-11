@@ -1,1 +1,22 @@
 {% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="introduction">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, sint voluptas possimus non temporibus quo!</p>
+        <img src={% static 'menus/images/starbucks/logo.png' %}>
+    </div>
+{% endblock content %}
+
+{% block footer %}
+    <!-- <div class="footer">
+        <div class="contact">
+            <p class="title">기프티콘 계산기</p>
+            <ul>
+                <li>기획자 김채연 : cocodusco@gmail.com</li>
+                <li>개발자 염경민 : gmyeom1230@gmail.com</li>
+            </ul>
+        </div>
+        <p>Copyright 2021 000000 Allrights reserved.</p>
+    </div> -->
+{% endblock footer %}
