@@ -6,12 +6,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=2.2111>
+        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=2.36>
         <title>Gifticon Calculator</title>
     </head>
 
     <header>
-        <img class="hamburger" src={% static 'menus/images/starbucks/logo.png' %}>
+        <a class="hamburger" href={% url 'calculator' %}><img src={% static 'menus/images/starbucks/logo.png' %}></a>
         <a class="logo" href={% url 'index' %}>
             <img src={% static 'menus/images/starbucks/logo.png' %}>
         </a>
