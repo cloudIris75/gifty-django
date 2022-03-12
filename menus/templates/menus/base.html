@@ -6,22 +6,34 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=2.1111>
+        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=2.2111>
         <title>Gifticon Calculator</title>
     </head>
 
     <header>
-        <img class="menu" src={% static 'menus/images/starbucks/logo.png' %}>
+        <img class="hamburger" src={% static 'menus/images/starbucks/logo.png' %}>
         <a class="logo" href={% url 'index' %}>
             <img src={% static 'menus/images/starbucks/logo.png' %}>
         </a>
     </header>
     <body>
+        <ul class="menu">
+            <li><a href={% url 'index' %}>홈</a></li>
+            <li><a href={% url 'brand-list' %}>브랜드</a></li>
+            <li><a href={% url 'menu-list' %}>메뉴</a></li>
+            <li><a href={% url 'calculator' %}>계산기</a></li>
+        </ul>
         {% block content %}
         {% endblock content %}
     </body>
     <footer>
-        {% block footer %}
-        {% endblock footer %}
+        <div class="contact">
+            <p class="title">기프티콘 계산기</p>
+            <ul>
+                <li>기획자 cocodusco@gmail.com</li>
+                <li>개발자 gmyeom1230@gmail.com</li>
+            </ul>
+        </div>
+        <p>Copyright 2021 000000 Allrights reserved.</p>
     </footer>
 </html>

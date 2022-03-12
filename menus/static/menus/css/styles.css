@@ -1,5 +1,7 @@
 :root {
     /* Size */
+    --width-size: 23.438em;
+    --height-size: 50em;
     --header-size: 4.063em;
     --footer-size: 5.938em;
     --border-size: 0.2em;
@@ -16,8 +18,8 @@
 }
 
 html {
-    width: 23.438em;
-    height: 50em;
+    width: var(--width-size);
+    height: var(--height-size);
 }
 
 h1, h2, h3, p, a, ul, li {
@@ -36,13 +38,6 @@ img {
 }
 
 /* base */
-body {
-    height: auto;
-    min-height: 100%;
-    display: flex;
-    align-items: center;
-}
-
 header {
     position: fixed;
     left: 0em;
@@ -58,7 +53,7 @@ header {
     border-color: var(--border-color);
 }
 
-header .menu {
+header .hamburger {
     width: var(--header-img-size);
     height: var(--header-img-size);
     border-radius: 50%;
@@ -79,12 +74,45 @@ header .logo img {
     border-radius: 50%;
 }
 
+body {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+body .menu {
+    position: fixed;
+    left: 0em;
+    top: calc(var(--header-size) + var(--border-size));
+    width: calc(12.188em - 4em);
+    height: calc(var(--height-size) - var(--header-size) - var(--footer-size) - var(--border-size) * 2 - 6em);
+    padding: 3em 2em;
+    z-index: 1;
+    background-color: white;
+    border-right-style: solid;
+    border-right-width: var(--border-size);
+    border-color: var(--border-color);
+}
+
+body .menu li {
+    font-size: 2em;
+    margin: 0.5em 0em;
+}
+
 /* index */
 .introduction {
+    width: var(--width-size);
+    height: calc(var(--height-size) - var(--header-size) - var(--footer-size));
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: var(--header-size) 1em var(--footer-size) 1em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: var(--header-size);
+    padding-bottom: var(--footer-size);
+    z-index: 0;
 }
 
 .introduction p {
