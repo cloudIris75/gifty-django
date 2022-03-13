@@ -19,13 +19,6 @@ def menu_list(request):
     menu = Menu.objects.order_by('brand_id', 'category')
     context['menu_list'] = menu
 
-    paginator = Paginator(menu, 6)
-    curr_page_num = request.GET.get('page')
-    if curr_page_num is None:
-        curr_page_num = 1
-    page = paginator.page(curr_page_num)
-    context['page_obj'] = page
-
     return render(request, 'menus/menu_list.html', context=context)    
 
 def menu_brand(request, id):
@@ -37,13 +30,6 @@ def menu_brand(request, id):
 
     menu_brand = Menu.objects.filter(brand_id=id)
     context['menu_list'] = menu_brand
-
-    paginator = Paginator(menu_brand, 6)
-    curr_page_num = request.GET.get('page')
-    if curr_page_num is None:
-        curr_page_num = 1
-    page = paginator.page(curr_page_num)
-    context['page_obj'] = page
 
     return render(request, 'menus/menu_list.html', context=context)
 
@@ -57,13 +43,6 @@ def menu_category(request, id, ct):
 
     menu_category = Menu.objects.filter(brand_id=id, category=ct)
     context['menu_list'] = menu_category
-
-    paginator = Paginator(menu_category, 6)
-    curr_page_num = request.GET.get('page')
-    if curr_page_num is None:
-        curr_page_num = 1
-    page = paginator.page(curr_page_num)
-    context['page_obj'] = page
 
     return render(request, 'menus/menu_list.html', context=context)
 

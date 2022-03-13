@@ -158,9 +158,10 @@ footer .contact {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 }
 
-footer .contact .title {
+footer .contact .web-title {
     font-size: 1em;
     font-weight: bold;
 }
@@ -178,7 +179,6 @@ footer .contact ul li {
 footer p {
     font-size: 0.8em;
     text-align: center;
-    margin-bottom: 1em;
 }
 
 /* brand_list */
@@ -196,8 +196,9 @@ footer p {
     z-index: 0;
 }
 
-.title {
-    margin: 2em 0;
+.brand-title {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 .list {
@@ -232,32 +233,6 @@ footer p {
     font-size: 0.8em;
 }
 
-.paginator {
-    width: 100%;
-    margin: 2em 0;
-    text-align: center;
-}
-
-.paginator a {
-    display: inline-block;
-}
-
-.paginator .first {
-    margin-right: 1em;
-}
-
-.paginator .last {
-    margin-left: 1em;
-}
-
-.paginator span {
-    display: inline-block;
-}
-
-.paginator span p {
-    margin: 0 1em;
-}
-
 /* menu_list */
 .category {
     display: flex;
@@ -267,13 +242,14 @@ footer p {
 
 .form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .form form {
-    margin-bottom: 1em;
+    margin-right: 1em;
 }
 
 .menu-list {

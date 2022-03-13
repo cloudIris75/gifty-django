@@ -20,27 +20,29 @@
                     {% endfor %}
                 </select>
             </form>
+
             {% if id %}
-                <form>
-                    <select name="category" onchange="if(this.value) location.href=(this.value);">
-                        <option value={% url 'menu-brand' id %}>카테고리</option>
-                        {% with '음료 푸드 상품' as list %}
-                            {% for category in list.split %}
-                                {% if ct %}
-                                    {% if category == ct %}
-                                        <option value={% url 'menu-category' id=id ct=category %} selected>{{category}}</option>
-                                    {% else %}
-                                        <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
-                                    {% endif %}
+            <form>
+                <select name="category" onchange="if(this.value) location.href=(this.value);">
+                    <option value={% url 'menu-brand' id %}>카테고리</option>
+                    {% with '음료 푸드 상품' as list %}
+                        {% for category in list.split %}
+                            {% if ct %}
+                                {% if category == ct %}
+                                    <option value={% url 'menu-category' id=id ct=category %} selected>{{category}}</option>
                                 {% else %}
                                     <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
                                 {% endif %}
-                            {% endfor %}
-                        {% endwith %}
-                    </select>
-                </form>
+                            {% else %}
+                                <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+                </select>
+            </form>
             {% endif %}
         </div>
+
         {% if menu_list %}
             <ul class="list">
                 {% for menu in menu_list %}
@@ -53,21 +55,6 @@
                     </li>
                 {% endfor %}
             </ul>
-            <div class="paginator">
-                {% if page_obj.has_previous %}
-                    <a href="?page=1" class="first">처음</a>
-                    <a href="?page={{page_obj.previous_page_number}}" class="prev">이전</a>
-                {% endif %}
-
-                <span class="page">
-                    <p>{{page_obj.number}} / {{page_obj.paginator.num_pages}}</p>
-                </span>
-            
-                {% if page_obj.has_next %}
-                    <a href="?page={{page_obj.next_page_number}}" class="next">다음</a>
-                    <a href="?page={{page_obj.paginator.num_pages}}" class="last">마지막</a>
-                {% endif %}
-            </div>
         {% endif %}
     </div>
 {% endblock content %}
