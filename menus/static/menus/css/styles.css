@@ -240,7 +240,7 @@ footer p {
     align-items: center;
 }
 
-.form {
+.select {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -248,7 +248,8 @@ footer p {
     margin-bottom: 1em;
 }
 
-.form form {
+.select select {
+    width: 6.25em;
     margin-right: 1em;
 }
 
