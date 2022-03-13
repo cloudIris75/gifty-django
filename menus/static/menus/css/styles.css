@@ -10,9 +10,11 @@
     /* --header-img-size: 2.5em; */
     --header-img-size: 3em;
     --index-img-size: 7.5em;
+    --brand-img-size: 7.5em;
 
     /* Color */
     --border-color: #9EADBA;
+    --menu-color: blue;
 }
 
 * {
@@ -97,7 +99,11 @@ body .menu {
     border-right-style: solid;
     border-right-width: var(--border-size);
     border-color: var(--border-color);
-    visibility: hidden;
+    display: none;
+}
+
+body .menu.active {
+    display: block;
 }
 
 body .menu li {
@@ -212,10 +218,10 @@ footer p {
 }
 
 .image {
-    width: 7.5em;
-    height: 7.5em;
+    width: var(--brand-img-size);
+    height: var(--brand-img-size);
     border-radius: 50%;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 .name {
