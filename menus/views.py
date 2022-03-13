@@ -16,7 +16,7 @@ def menu_list(request):
     brands = Brand.objects.all()
     context['brands'] = brands
 
-    menu = Menu.objects.order_by('brand_id', 'category')
+    menu = Menu.objects.order_by('brand_id', 'category', 'name')
     context['menu_list'] = menu
 
     return render(request, 'menus/menu_list.html', context=context)    
@@ -28,7 +28,7 @@ def menu_brand(request, id):
     brands = Brand.objects.all()
     context['brands'] = brands
 
-    menu_brand = Menu.objects.filter(brand_id=id)
+    menu_brand = Menu.objects.filter(brand_id=id).order_by('category', 'name')
     context['menu_list'] = menu_brand
 
     return render(request, 'menus/menu_list.html', context=context)
@@ -41,7 +41,7 @@ def menu_category(request, id, ct):
     brands = Brand.objects.all()
     context['brands'] = brands
 
-    menu_category = Menu.objects.filter(brand_id=id, category=ct)
+    menu_category = Menu.objects.filter(brand_id=id, category=ct).order_by('name')
     context['menu_list'] = menu_category
 
     return render(request, 'menus/menu_list.html', context=context)
