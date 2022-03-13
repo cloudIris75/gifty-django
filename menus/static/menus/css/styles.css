@@ -111,6 +111,10 @@ body .menu li {
     margin-bottom: 1em;
 }
 
+body .menu li a:hover {
+    color: var(--menu-color);
+}
+
 /* index */
 .introduction {
     width: var(--width-size);
