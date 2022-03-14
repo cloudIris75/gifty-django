@@ -47,4 +47,9 @@ def menu_category(request, id, ct):
     return render(request, 'menus/menu_list.html', context=context)
 
 def calculator(request):
-    return render(request, 'menus/calculator.html')
+    context = dict()
+
+    brands = Brand.objects.all()
+    context['brands'] = brands
+
+    return render(request, 'menus/calculator.html', context=context)

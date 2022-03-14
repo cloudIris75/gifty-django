@@ -3,60 +3,60 @@
 {% load humanize %}
 
 {% block content %}
-    <div class="wrap">
-        <div class="select">
-            <select name="brand" onchange="if(this.value) location.href=(this.value);">
-                <option value={% url 'menu-list' %}>브랜드</option>
-                {% for brand in brands %}
-                    {% if id %}
-                        {% if brand.id == id %}
-                            <option value={% url 'menu-brand' brand.id %} selected>{{brand.name}}</option>
-                        {% else %}
-                            <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
-                        {% endif %}
+<div class="wrap">
+    <div class="select">
+        <select name="brand" onchange="if(this.value) location.href=(this.value);">
+            <option value={% url 'menu-list' %}>브랜드</option>
+            {% for brand in brands %}
+                {% if id %}
+                    {% if brand.id == id %}
+                        <option value={% url 'menu-brand' brand.id %} selected>{{brand.name}}</option>
                     {% else %}
                         <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
                     {% endif %}
-                {% endfor %}
-            </select>
+                {% else %}
+                    <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
 
-            {% if id %}
-            <select name="category" onchange="if(this.value) location.href=(this.value);">
-                <option value={% url 'menu-brand' id %}>카테고리</option>
-                {% with '음료 푸드 상품' as list %}
-                    {% for category in list.split %}
-                        {% if ct %}
-                            {% if category == ct %}
-                                <option value={% url 'menu-category' id=id ct=category %} selected>{{category}}</option>
-                            {% else %}
-                                <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
-                            {% endif %}
+        {% if id %}
+        <select name="category" onchange="if(this.value) location.href=(this.value);">
+            <option value={% url 'menu-brand' id %}>카테고리</option>
+            {% with '음료 푸드 상품' as list %}
+                {% for category in list.split %}
+                    {% if ct %}
+                        {% if category == ct %}
+                            <option value={% url 'menu-category' id=id ct=category %} selected>{{category}}</option>
                         {% else %}
                             <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
                         {% endif %}
-                    {% endfor %}
-                {% endwith %}
-            </select>
-            {% else %}
-            <select name="category">
-                <option value="basics">카테고리</option>
-                <option value="disable" disabled>브랜드를 먼저 선택해 주세요!</option>
-            </select>
-            {% endif %}
-        </div>
-
-        {% if menu_list %}
-            <ul class="list">
-                {% for menu in menu_list %}
-                    <li>
-                        <div class="item">
-                            <img class="image" src={% get_static_prefix %}{{menu.img_path}}>
-                            <h3 class="name">{{menu.name}}</h3>
-                            <h3 class="price">{{menu.price|intcomma}}원</h3>
-                        </div>
-                    </li>
+                    {% else %}
+                        <option value={% url 'menu-category' id=id ct=category %}>{{category}}</option>
+                    {% endif %}
                 {% endfor %}
-            </ul>
+            {% endwith %}
+        </select>
+        {% else %}
+        <select name="category">
+            <option value="basics">카테고리</option>
+            <option value="disable" disabled>브랜드를 먼저 선택해 주세요!</option>
+        </select>
         {% endif %}
     </div>
+
+    {% if menu_list %}
+        <ul class="list">
+            {% for menu in menu_list %}
+                <li>
+                    <div class="item">
+                        <img class="image" src={% get_static_prefix %}{{menu.img_path}}>
+                        <h3 class="name">{{menu.name}}</h3>
+                        <h3 class="price">{{menu.price|intcomma}}원</h3>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
 {% endblock content %}
