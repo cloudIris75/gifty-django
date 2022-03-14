@@ -115,6 +115,10 @@ body .menu li a:hover {
     color: var(--menu-color);
 }
 
+body .menu li a.active {
+    color: var(--menu-color);
+}
+
 /* index */
 .introduction {
     width: var(--width-size);
@@ -202,8 +206,7 @@ footer p {
 }
 
 .brand-title {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
+    margin: 1em 0em;
 }
 
 .list {
@@ -249,8 +252,7 @@ footer p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 2em;
-    margin-bottom: 1em;
+    margin: 1.5em 0em;
 }
 
 .select select {
