@@ -260,14 +260,4 @@ footer p {
     margin-right: 1em;
 }
 
-.menu-list {
-    width: 37.5em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    justify-content: flex-start;
-}
-
 /* calculator */

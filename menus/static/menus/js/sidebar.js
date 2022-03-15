@@ -1,7 +1,7 @@
 const url = window.location.pathname;
 const links = document.getElementsByClassName('link');
 
-switch(url) {
+switch (url) {
     case '/':
         links[0].classList.toggle('active');
         break;

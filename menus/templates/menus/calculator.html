@@ -5,12 +5,29 @@
 {% block content %}
 <div class="wrap">
     <div class="select">
-        
+        <form action="{% url 'calculator' %}" method="GET">
+            <select name="brand" onchange="this.form.submit()">
+                <!-- <option value={% url 'menu-list' %}>브랜드</option>
+                {% for brand in brands %}
+                    {% if id %}
+                        {% if brand.id == id %}
+                            <option value={% url 'menu-brand' brand.id %} selected>{{brand.name}}</option>
+                        {% else %}
+                            <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
+                        {% endif %}
+                    {% else %}
+                        <option value={% url 'menu-brand' brand.id %}>{{brand.name}}</option>
+                    {% endif %}
+                {% endfor %} -->
+            </select>
+        </form>    
     </div>
 
     <div class="gifticon">
-        <h2>기프티콘</h2>
-
+        <h3>기프티콘</h3>
+        <!-- {% for gifticon in gifticon_list %}
+            <p>{{gifticon.name}}</p>
+        {% endfor %} -->
     </div>
 </div>
 {% endblock content %}

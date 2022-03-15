@@ -2,11 +2,15 @@
 {% load static %}
 {% load humanize %}
 
+{% block js %}
+<script src={% static 'menus/js/order.js' %}?ver=0.111 defer></script>
+{% endblock js %}
+
 {% block content %}
 <div class="wrap">
     <div class="select">
         <select name="brand" onchange="if(this.value) location.href=(this.value);">
-            <option value={% url 'menu-list' %}>브랜드</option>
+            <option value={% url 'menu-list' %} selected>브랜드</option>
             {% for brand in brands %}
                 {% if id %}
                     {% if brand.id == id %}
@@ -22,7 +26,7 @@
 
         {% if id %}
         <select name="category" onchange="if(this.value) location.href=(this.value);">
-            <option value={% url 'menu-brand' id %}>카테고리</option>
+            <option value={% url 'menu-brand' id %} selected>카테고리</option>
             {% with '음료 푸드 상품' as list %}
                 {% for category in list.split %}
                     {% if ct %}
@@ -39,24 +43,33 @@
         </select>
         {% else %}
         <select name="category">
-            <option value="basics">카테고리</option>
+            <option value="basics" selected>카테고리</option>
             <option value="disable" disabled>브랜드를 먼저 선택해 주세요!</option>
         </select>
         {% endif %}
+
+        <select name="order" id="order" onchange="changeOrder(this);">
+            <option value="order" selected>정렬</option>
+            <option value="name">이름 순</option>
+            <option value="descending">높은 금액 순</option>
+            <option value="ascending">낮은 금액 순</option>
+        </select>
     </div>
 
-    {% if menu_list %}
-        <ul class="list">
-            {% for menu in menu_list %}
-                <li>
-                    <div class="item">
-                        <img class="image" src={% get_static_prefix %}{{menu.img_path}}>
-                        <h3 class="name">{{menu.name}}</h3>
-                        <h3 class="price">{{menu.price|intcomma}}원</h3>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <div id="menu-list">
+        {% if menu_name %}
+            <ul class="list">
+                {% for menu in menu_name %}
+                    <li>
+                        <div class="item">
+                            <img class="image" src={% get_static_prefix %}{{menu.img_path}}>
+                            <h3 class="name">{{menu.name}}</h3>
+                            <h3 class="price">{{menu.price|intcomma}}원</h3>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 </div>
 {% endblock content %}
