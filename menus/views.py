@@ -12,18 +12,18 @@ class BrandListView(ListView):
 
 class MenuView(View):
     def get(self, request):
-        context = dict()
+        brands = Brand.objects.all().order_by('id')
+        menu_list = Menu.objects.all().order_by('name')
 
-        brands = Brand.objects.all()
-        context['brands'] = brands
+        data = {
+            'brands': brands,
+            'menu_list': menu_list
+        }
 
-        menu_list = Menu.objects.all()
-        context['menu_list'] = menu_list
-
-        return render(request, 'menus/menu_list.html', context=context)
+        return render(request, 'menus/menu_list.html', data)
 
     def post(self, request):
-        brands = Brand.objects.all()
+        brands = Brand.objects.all().order_by('id')
 
         id = request.POST.get('id', False)
         ct = request.POST.get('ct', False)
@@ -62,10 +62,41 @@ class MenuView(View):
 
         return render(request, 'menus/menu_list.html', data)
 
-def calculator(request):
-    context = dict()
+class Calculator(View):
+    def get(self, request):
+        brands = Brand.objects.all().order_by('id')
+        gifticon_list = Gifticon.objects.all().order_by('name')
 
-    brands = Brand.objects.all()
-    context['brands'] = brands
+        data = {
+            'brands': brands,
+            'gifticon_list': gifticon_list
+        }
 
-    return render(request, 'menus/calculator.html', context=context)
+        return render(request, 'menus/calculator.html', data)
+
+    def post(self, request):
+        brands = Brand.objects.all().order_by('name')
+
+        id = request.POST.get('id', False)
+        ct = request.POST.get('ct', False)
+        name = request.POST.get('name', False)
+        
+        gifticons = Q()
+        if id and id != '0':
+            gifticons &= Q(brand_id = id)
+            gifticon_list = Gifticon.objects.filter(gifticons)
+            if ct and ct != 'category':
+                gifticons &= Q(category = ct)
+                gifticon_list = Gifticon.objects.filter(gifticons)
+        else:
+            gifticon_list = Gifticon.objects.all()
+
+        data = {
+            'brands': brands,
+            'id': int(id),
+            'ct': ct,
+            'name': name,
+            'gifticon_list': gifticon_list
+        }
+
+        return render(request, 'menus/calculator.html', data)

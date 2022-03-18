@@ -4,11 +4,59 @@
 
 {% block content %}
 <div class="wrap">
-    <div class="select"> 
-    </div>
+    <form method="post" action={% url 'calculator' %} onChange="this.submit();">
+        {% csrf_token %}
+        <div class="select">
+            <select name="id">
+                <option value="0">브랜드</option>
+                {% for brand in brands %}
+                    {% if id %}
+                        {% if brand.id == id %}
+                            <option value={{brand.id}} selected>{{brand.name}}</option>
+                        {% else %}
+                            <option value={{brand.id}}>{{brand.name}}</option>
+                        {% endif %}
+                    {% else %}
+                        <option value={{brand.id}}>{{brand.name}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
 
-    <div class="gifticon">
-        <h3>기프티콘</h3>
-    </div>
+        <div class="gifticon">
+            <h3>기프티콘</h3>
+            <div class="select">
+                {% if id %}
+                <select name="ct">
+                    <option value="category" selected>카테고리</option>
+                    {% with '음료 푸드 상품' as list %}
+                        {% for category in list.split %}
+                            {% if ct %}
+                                {% if category == ct %}
+                                    <option value={{category}} selected>{{category}}</option>
+                                {% else %}
+                                    <option value={{category}}>{{category}}</option>
+                                {% endif %}
+                            {% else %}
+                                <option value={{category}}>{{category}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+                </select>
+                {% else %}
+                <select>
+                    <option selected>카테고리</option>
+                    <option disabled>브랜드를 먼저 선택해 주세요!</option>
+                </select>
+                {% endif %}
+
+                {% if id and ct %}
+                <input type="text" name="name" id="gifticon-name">
+                {% else %}
+                <input type="text" name="name" id="gifticon-name" disabled>
+                {% endif %}
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock content %}
