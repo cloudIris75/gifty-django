@@ -11,19 +11,28 @@ class BrandListView(ListView):
     ordering = ['id']
 
 class MenuView(View):
-    def get(self, request, id=None, ct=None):
+    def get(self, request):
         context = dict()
-        context['id'] = id
-        context['ct'] = ct
 
         brands = Brand.objects.all()
         context['brands'] = brands
 
+        menu_list = Menu.objects.all()
+        context['menu_list'] = menu_list
+
+        return render(request, 'menus/menu_list.html', context=context)
+
+    def post(self, request):
+        brands = Brand.objects.all()
+
+        id = request.POST.get('id', False)
+        ct = request.POST.get('ct', False)
+
         menus = Q()
-        if id:
+        if id and id != '0':
             menus &= Q(brand_id = id)
             menu_list = Menu.objects.filter(menus)
-            if ct:
+            if ct and ct != 'category':
                 menus &= Q(category = ct)
                 menu_list = Menu.objects.filter(menus)
         else:
@@ -31,10 +40,15 @@ class MenuView(View):
 
         # ordering = order
         # menu_list = Menu.objects.filter(menus).order_by(ordering)
-        
-        context['menu_list'] = menu_list
 
-        return render(request, 'menus/menu_list.html', context=context)
+        data = {
+            'brands': brands,
+            'id': int(id),
+            'ct': ct,
+            'menu_list': menu_list
+        }
+
+        return render(request, 'menus/menu_list.html', data)
 
 def calculator(request):
     context = dict()
