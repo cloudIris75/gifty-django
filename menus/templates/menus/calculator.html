@@ -2,9 +2,13 @@
 {% load static %}
 {% load humanize %}
 
+{% block script %}
+<script src={% static 'menus/js/counter.js' %}?ver=0.11111111 defer></script>
+{% endblock script %}
+
 {% block content %}
 <div class="wrap">
-    <form class="form" method="post" action={% url 'calculator' %} onChange="this.submit();">
+    <form class="form" method="post" action={% url 'calculator' %} onchange="this.submit();">
         {% csrf_token %}
         <div class="select">
             <select name="id">
@@ -26,7 +30,7 @@
         <div class="gifticon">
             <h3>기프티콘</h3>
             <div class="select">
-                {% if id %}
+                <!-- {% if id %}
                 <select name="ct">
                     <option value="category" selected>카테고리</option>
                     {% with '음료 푸드 상품' as list %}
@@ -48,24 +52,25 @@
                     <option selected>카테고리</option>
                     <option disabled>브랜드를 먼저 선택해 주세요!</option>
                 </select>
-                {% endif %}
+                {% endif %} -->
 
-                {% if id and ct %}
+                {% if id %}
                 <input type="text" name="name" id="gifticon-name" value="{{name}}">
                 {% else %}
                 <input type="text" name="name" id="gifticon-name" disabled>
                 {% endif %}
             </div>
-            {% if gifticon %}
+            {% if id and gifticon %}
             <div class="gifticon-item">
                 <img class="image" src={% get_static_prefix %}{{gifticon.img_path}}>
                 <div class="info">
                     <h3 class="name">{{gifticon.name}}</h3>
-                    <h3 class="price">{{gifticon.price|intcomma}}원</h3>
+                    <h3 class="price">{{gifticon_price|intcomma}}원</h3>
                     <div class="count">
-                        <button>+</button>
-                        <p></p>
-                        <button>-</button>
+                        <input type="button" onclick="counter('plus');" value="+" />
+                        <input name="gifticon-count" id="gifticon-count" value={{gifticon_count}} />
+                        <input type="button" onclick="counter('minus');" value="-" />
+                        <input type="submit" value="수정">
                     </div>
                 </div>
             </div>

@@ -273,21 +273,32 @@ footer p {
     align-items: center;
 }
 
-.gifticon h3 {
-    width: 100%;
-    text-align: left;
-}
-
 .gifticon-item {
-    width: 100%;
+    width: var(--width-size);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+}
+
+.gifticon-item .image {
+    margin-right: 2em;
+}
+
+.info h3 {
+    margin-bottom: 0.5em;
 }
 
 .count {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.count input {
+    margin-right: 0.5em;
+}
+
+.count #gifticon-count {
+    width: 1em;
 }
