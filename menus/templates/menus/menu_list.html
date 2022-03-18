@@ -45,13 +45,18 @@
                 <option disabled>브랜드를 먼저 선택해 주세요!</option>
             </select>
             {% endif %}
-    
-            <!-- <select name="order" id="order">
-                <option value="order" selected>정렬</option>
-                <option value="name">이름 순</option>
-                <option value="descending">높은 금액 순</option>
-                <option value="ascending">낮은 금액 순</option>
-            </select> -->
+            
+            <select name="od">
+                {% with '이름순 가격낮은순 가격높은순' as list %}
+                    {% for order in list.split %}
+                        {% if order == od %}
+                            <option value={{order}} selected>{{order}}</option>
+                        {% else %}
+                            <option value={{order}}>{{order}}</option>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </select>
         </div>
     </form>
 

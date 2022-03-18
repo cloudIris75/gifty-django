@@ -27,6 +27,7 @@ class MenuView(View):
 
         id = request.POST.get('id', False)
         ct = request.POST.get('ct', False)
+        od = request.POST.get('od', False)
 
         menus = Q()
         if id and id != '0':
@@ -38,14 +39,25 @@ class MenuView(View):
         else:
             menu_list = Menu.objects.all()
 
-        # ordering = order
-        # menu_list = Menu.objects.filter(menus).order_by(ordering)
+        if od:  
+            if od == '이름순':
+                ordering = 'name'
+            elif od == '가격낮은순':
+                ordering = 'price'
+            elif od == '가격높은순':
+                ordering = '-price'
+        else:
+            od = '이름순'
+            ordering = 'name'
+        
+        menu_order = menu_list.order_by(ordering)
 
         data = {
             'brands': brands,
             'id': int(id),
             'ct': ct,
-            'menu_list': menu_list
+            'od': od,
+            'menu_list': menu_order
         }
 
         return render(request, 'menus/menu_list.html', data)
