@@ -91,12 +91,19 @@ class Calculator(View):
         else:
             gifticon_list = Gifticon.objects.all()
 
+        if name:
+            gifticon = Gifticon.objects.get(name=name)
+        else:
+            name = False
+            gifticon = False
+
         data = {
             'brands': brands,
             'id': int(id),
             'ct': ct,
             'name': name,
-            'gifticon_list': gifticon_list
+            'gifticon_list': gifticon_list,
+            'gifticon': gifticon
         }
 
         return render(request, 'menus/calculator.html', data)

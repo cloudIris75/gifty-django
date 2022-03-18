@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="wrap">
-    <form method="post" action={% url 'calculator' %} onChange="this.submit();">
+    <form class="form" method="post" action={% url 'calculator' %} onChange="this.submit();">
         {% csrf_token %}
         <div class="select">
             <select name="id">
@@ -51,11 +51,25 @@
                 {% endif %}
 
                 {% if id and ct %}
-                <input type="text" name="name" id="gifticon-name">
+                <input type="text" name="name" id="gifticon-name" value="{{name}}">
                 {% else %}
                 <input type="text" name="name" id="gifticon-name" disabled>
                 {% endif %}
             </div>
+            {% if gifticon %}
+            <div class="gifticon-item">
+                <img class="image" src={% get_static_prefix %}{{gifticon.img_path}}>
+                <div class="info">
+                    <h3 class="name">{{gifticon.name}}</h3>
+                    <h3 class="price">{{gifticon.price|intcomma}}원</h3>
+                    <div class="count">
+                        <button>+</button>
+                        <p></p>
+                        <button>-</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </form>
 </div>

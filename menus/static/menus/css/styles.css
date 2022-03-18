@@ -261,3 +261,33 @@ footer p {
 }
 
 /* calculator */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gifticon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gifticon h3 {
+    width: 100%;
+    text-align: left;
+}
+
+.gifticon-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

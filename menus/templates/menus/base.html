@@ -6,12 +6,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=0.31111>
+        {% block link %}
+        {% endblock link %}
+        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=0.3111111>
         <title>Gifticon Calculator</title>
-        <script src={% static 'menus/js/hamburger.js' %}?ver=0.2 defer></script>
-        <script src={% static 'menus/js/sidebar.js' %}?ver=0.2 defer></script>
         {% block script %}
         {% endblock script %}
+        <script src={% static 'menus/js/hamburger.js' %}?ver=0.2 defer></script>
+        <script src={% static 'menus/js/sidebar.js' %}?ver=0.2 defer></script>
     </head>
 
     <header>
