@@ -3,12 +3,12 @@
 {% load humanize %}
 
 {% block script %}
-<script src={% static 'menus/js/counter.js' %}?ver=0.11111111 defer></script>
+<script src={% static 'menus/js/counter.js' %}?ver=0.1111111111 defer></script>
 {% endblock script %}
 
 {% block content %}
 <div class="wrap">
-    <form class="form" method="post" action={% url 'calculator' %} onchange="this.submit();">
+    <form class="form" id="form" method="post" action={% url 'calculator' %} onchange="this.submit();">
         {% csrf_token %}
         <div class="select">
             <select name="id">
@@ -27,16 +27,16 @@
             </select>
         </div>
 
-        <div class="gifticon">
-            <h3>기프티콘</h3>
+        <div class="item-list">
+            <h3 class="title">기프티콘</h3>
             <div class="select">
-                <!-- {% if id %}
-                <select name="ct">
-                    <option value="category" selected>카테고리</option>
+                {% if id %}
+                <select name="gifticon-ct">
+                    <option value="" selected>카테고리</option>
                     {% with '음료 푸드 상품' as list %}
                         {% for category in list.split %}
-                            {% if ct %}
-                                {% if category == ct %}
+                            {% if gifticon_ct %}
+                                {% if category == gifticon_ct %}
                                     <option value={{category}} selected>{{category}}</option>
                                 {% else %}
                                     <option value={{category}}>{{category}}</option>
@@ -52,25 +52,78 @@
                     <option selected>카테고리</option>
                     <option disabled>브랜드를 먼저 선택해 주세요!</option>
                 </select>
-                {% endif %} -->
+                {% endif %}
 
-                {% if id %}
-                <input type="text" name="name" id="gifticon-name" value="{{name}}">
+                {% if id and gifticon_ct %}
+                <input type="text" name="gifticon-name" id="gifticon-name" onchange="form.submit();" value="{{gifticon_name}}">
                 {% else %}
-                <input type="text" name="name" id="gifticon-name" disabled>
+                <input type="text" name="gifticon-name" id="gifticon-name" disabled>
                 {% endif %}
             </div>
-            {% if id and gifticon %}
-            <div class="gifticon-item">
-                <img class="image" src={% get_static_prefix %}{{gifticon.img_path}}>
+            {% if id and gifticon_ct and gifticon_item %}
+            <div class="item">
+                <img class="image" src={% get_static_prefix %}{{gifticon_item.img_path}}>
                 <div class="info">
-                    <h3 class="name">{{gifticon.name}}</h3>
+                    <h3 class="name">{{gifticon_item.name}}</h3>
                     <h3 class="price">{{gifticon_price|intcomma}}원</h3>
                     <div class="count">
-                        <input type="button" onclick="counter('plus');" value="+" />
-                        <input name="gifticon-count" id="gifticon-count" value={{gifticon_count}} />
-                        <input type="button" onclick="counter('minus');" value="-" />
-                        <input type="submit" value="수정">
+                        <input type="button" onclick="counter('plus', 'gifticon-count');" value="+">
+                        <input class="item-count" name="gifticon-count" id="gifticon-count" value={{gifticon_count}}>
+                        <input type="button" onclick="counter('minus', 'gifticon-count');" value="-">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="count-button">
+            <input type="button" value="+ 제품 추가">
+            <input type="button" value="- 제품 삭제">
+        </div>
+
+        <div class="item-list">
+            <h3 class="title">제품</h3>
+            <div class="select">
+                {% if id %}
+                <select name="menu1-ct">
+                    <option value="" selected>카테고리</option>
+                    {% with '음료 푸드 상품' as list %}
+                        {% for category in list.split %}
+                            {% if menu1_ct %}
+                                {% if category == menu1_ct %}
+                                    <option value={{category}} selected>{{category}}</option>
+                                {% else %}
+                                    <option value={{category}}>{{category}}</option>
+                                {% endif %}
+                            {% else %}
+                                <option value={{category}}>{{category}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+                </select>
+                {% else %}
+                <select>
+                    <option selected>카테고리</option>
+                    <option disabled>브랜드를 먼저 선택해 주세요!</option>
+                </select>
+                {% endif %}
+
+                {% if id and menu1_ct %}
+                <input type="text" name="menu1-name" id="menu1-name" value="{{menu1_name}}">
+                {% else %}
+                <input type="text" name="menu1-name" id="menu1-name" disabled>
+                {% endif %}
+            </div>
+            {% if id and menu1_ct and menu1_item %}
+            <div class="item">
+                <img class="image" src={% get_static_prefix %}{{menu1_item.img_path}}>
+                <div class="info">
+                    <h3 class="name">{{menu1_item.name}}</h3>
+                    <h3 class="price">{{menu1_price|intcomma}}원</h3>
+                    <div class="count">
+                        <input type="button" onclick="counter('plus', 'menu1-count');" value="+">
+                        <input class="item-count" name="menu1-count" id="menu1-count" value={{menu1_count}}>
+                        <input type="button" onclick="counter('minus', 'menu1-count');" value="-">
                     </div>
                 </div>
             </div>

@@ -219,7 +219,7 @@ footer p {
     justify-content: flex-start;
 }
 
-.item {
+.item-container {
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -252,7 +252,7 @@ footer p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 1.5em 0em;
+    margin-top: 1.5em;
 }
 
 .select select {
@@ -267,13 +267,27 @@ footer p {
     align-items: center;
 }
 
-.gifticon {
+.form .select {
+    margin: 1.5em 0em;
+}
+
+.item-list {
+    width: calc(var(--width-size) - 2em);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0em 1em;
+    padding-bottom: 0.5em;
+    border-bottom-style: solid;
+    border-bottom-width: var(--border-size);
+    border-color: var(--border-color);
 }
 
-.gifticon-item {
+.item-list .select {
+    margin: 1em 0em;
+}
+
+.item {
     width: var(--width-size);
     display: flex;
     flex-direction: row;
@@ -281,7 +295,7 @@ footer p {
     align-items: center;
 }
 
-.gifticon-item .image {
+.item .image {
     margin-right: 2em;
 }
 
@@ -299,6 +313,14 @@ footer p {
     margin-right: 0.5em;
 }
 
-.count #gifticon-count {
+.count .item-count {
     width: 1em;
+}
+
+.count-button {
+    margin: 1em 0em;
+}
+
+.count-button input {
+    margin-right: 0.5em;
 }

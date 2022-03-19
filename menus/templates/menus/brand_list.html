@@ -8,7 +8,7 @@
             <ul class="list">
                 {% for brand in brand_list %}
                     <li>
-                        <div class="item">
+                        <div class="item-container">
                             <img class="image" src={% get_static_prefix %}{{brand.img_path}}>
                             <h3 class="name">{{brand.name}}</h3>
                         </div>

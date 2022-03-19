@@ -1,5 +1,6 @@
-function counter(type) {
-    let count = document.getElementById('gifticon-count');
+function counter(type, item) {
+    const form = document.getElementById('form');
+    const count = document.getElementById(item);
     let num = count.value;
 
     if (type === 'plus') {
@@ -13,4 +14,5 @@ function counter(type) {
     }
 
     count.value = num;
+    form.submit();
 }
