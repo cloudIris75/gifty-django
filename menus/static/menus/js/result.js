@@ -1,9 +1,14 @@
 window.onload = function info() {
     let gifticon = document.getElementById('gifticon-price').innerHTML;
     let gifticon_int = parseInt(gifticon.replace('원', '').replace(',', ''), 10);
-    let price = document.getElementById('menu1-price').innerHTML;
-    let price_int = parseInt(price.replace('원', '').replace(',', ''), 10);
-    let differ = Math.abs(gifticon_int - price_int).toLocaleString();
+
+    let menu1 = document.getElementById('menu1-price').innerHTML;
+    let menu1_int = parseInt(menu1.replace('원', '').replace(',', ''), 10);
+    let menu2 = document.getElementById('menu2-price').innerHTML;
+    let menu2_int = parseInt(menu2.replace('원', '').replace(',', ''), 10);
+
+    let price_int = menu1_int + menu2_int;
+    let differ = Math.abs(gifticon_int - menu1_int - menu2_int).toLocaleString();
     let result = document.getElementById('result');
 
     if (price_int < gifticon_int) {

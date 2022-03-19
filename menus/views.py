@@ -83,6 +83,10 @@ class Calculator(View):
         menu1_ct = request.POST.get('menu1-ct', '')
         menu1_name = request.POST.get('menu1-name', '')
         menu1_count = request.POST.get('menu1-count', 1)
+
+        menu2_ct = request.POST.get('menu2-ct', '')
+        menu2_name = request.POST.get('menu2-name', '')
+        menu2_count = request.POST.get('menu2-count', 1)
         
         # gifticons = Q()
         # if id and id != '0':
@@ -114,7 +118,11 @@ class Calculator(View):
         menu1_item = item
         menu1_price = price
 
-        result = menu1_price
+        item_price(Menu, menu2_name, menu2_count)
+        menu2_item = item
+        menu2_price = price
+
+        result = menu1_price + menu2_price
 
         data = {
             'brands': brands,
@@ -132,6 +140,12 @@ class Calculator(View):
             'menu1_count': int(menu1_count),
             'menu1_item': menu1_item,
             'menu1_price': menu1_price,
+
+            'menu2_ct': menu2_ct,
+            'menu2_name': menu2_name,
+            'menu2_count': int(menu2_count),
+            'menu2_item': menu2_item,
+            'menu2_price': menu2_price,
 
             'result': result
         }
