@@ -87,6 +87,18 @@ class Calculator(View):
         menu2_ct = request.POST.get('menu2-ct', '')
         menu2_name = request.POST.get('menu2-name', '')
         menu2_count = request.POST.get('menu2-count', 1)
+
+        menu3_ct = request.POST.get('menu3-ct', '')
+        menu3_name = request.POST.get('menu3-name', '')
+        menu3_count = request.POST.get('menu3-count', 1)
+
+        menu4_ct = request.POST.get('menu4-ct', '')
+        menu4_name = request.POST.get('menu4-name', '')
+        menu4_count = request.POST.get('menu4-count', 1)
+
+        menu5_ct = request.POST.get('menu5-ct', '')
+        menu5_name = request.POST.get('menu5-name', '')
+        menu5_count = request.POST.get('menu5-count', 1)
         
         # gifticons = Q()
         # if id and id != '0':
@@ -122,7 +134,19 @@ class Calculator(View):
         menu2_item = item
         menu2_price = price
 
-        result = menu1_price + menu2_price
+        item_price(Menu, menu3_name, menu3_count)
+        menu3_item = item
+        menu3_price = price
+
+        item_price(Menu, menu4_name, menu4_count)
+        menu4_item = item
+        menu4_price = price
+
+        item_price(Menu, menu5_name, menu5_count)
+        menu5_item = item
+        menu5_price = price
+
+        result = menu1_price + menu2_price + menu3_price + menu4_price + menu5_price
 
         data = {
             'brands': brands,
@@ -146,6 +170,24 @@ class Calculator(View):
             'menu2_count': int(menu2_count),
             'menu2_item': menu2_item,
             'menu2_price': menu2_price,
+
+            'menu3_ct': menu3_ct,
+            'menu3_name': menu3_name,
+            'menu3_count': int(menu3_count),
+            'menu3_item': menu3_item,
+            'menu3_price': menu3_price,
+
+            'menu4_ct': menu4_ct,
+            'menu4_name': menu4_name,
+            'menu4_count': int(menu4_count),
+            'menu4_item': menu4_item,
+            'menu4_price': menu4_price,
+
+            'menu5_ct': menu5_ct,
+            'menu5_name': menu5_name,
+            'menu5_count': int(menu5_count),
+            'menu5_item': menu5_item,
+            'menu5_price': menu5_price,
 
             'result': result
         }
