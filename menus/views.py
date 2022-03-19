@@ -114,13 +114,7 @@ class Calculator(View):
         menu1_item = item
         menu1_price = price
 
-        # if gifticon_name:
-        #     gifticon = Gifticon.objects.get(name=gifticon_name)
-        #     if gifticon_count:
-        #         gifticon_price = int(gifticon.price) * int(gifticon_count)
-        # else:
-        #     gifticon = False
-        #     gifticon_price = 0
+        result = menu1_price
 
         data = {
             'brands': brands,
@@ -138,6 +132,8 @@ class Calculator(View):
             'menu1_count': int(menu1_count),
             'menu1_item': menu1_item,
             'menu1_price': menu1_price,
+
+            'result': result
         }
 
         return render(request, 'menus/calculator.html', data)

@@ -4,6 +4,7 @@
 
 {% block script %}
 <script src={% static 'menus/js/counter.js' %}?ver=0.1111111111 defer></script>
+<script src={% static 'menus/js/result.js' %}?ver=0.1111111 defer></script>
 {% endblock script %}
 
 {% block content %}
@@ -65,7 +66,7 @@
                 <img class="image" src={% get_static_prefix %}{{gifticon_item.img_path}}>
                 <div class="info">
                     <h3 class="name">{{gifticon_item.name}}</h3>
-                    <h3 class="price">{{gifticon_price|intcomma}}원</h3>
+                    <h3 class="price" id="gifticon-price">{{gifticon_price|intcomma}}원</h3>
                     <div class="count">
                         <input type="button" onclick="counter('plus', 'gifticon-count');" value="+">
                         <input class="item-count" name="gifticon-count" id="gifticon-count" value={{gifticon_count}}>
@@ -119,7 +120,7 @@
                 <img class="image" src={% get_static_prefix %}{{menu1_item.img_path}}>
                 <div class="info">
                     <h3 class="name">{{menu1_item.name}}</h3>
-                    <h3 class="price">{{menu1_price|intcomma}}원</h3>
+                    <h3 class="price" id="menu1-price">{{menu1_price|intcomma}}원</h3>
                     <div class="count">
                         <input type="button" onclick="counter('plus', 'menu1-count');" value="+">
                         <input class="item-count" name="menu1-count" id="menu1-count" value={{menu1_count}}>
@@ -129,6 +130,16 @@
             </div>
             {% endif %}
         </div>
+
+        <div class="result">
+            <h3>{{result|intcomma}}원</h3>
+            <h3 id="result"></h3>
+        </div>
     </form>
+
+    <div class="option">
+        <button><a href={% url 'menu-list' %}>추가할 수 있는 메뉴 보러가기</a></button>
+        <button><a href={% url 'calculator' %}>초기화하기</a></button>
+    </div>
 </div>
 {% endblock content %}
