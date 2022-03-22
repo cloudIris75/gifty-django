@@ -284,6 +284,10 @@ footer p {
     border-color: var(--border-color);
 }
 
+#menu2, #menu3, #menu4, #menu5 {
+    display: none;
+}
+
 .item-list .select {
     margin: 1em 0em;
 }

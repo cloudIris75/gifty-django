@@ -5,6 +5,7 @@
 {% block script %}
 <script src={% static 'menus/js/counter.js' %}?ver=0.211 defer></script>
 <script src={% static 'menus/js/result.js' %}?ver=0.2111 defer></script>
+<script src={% static 'menus/js/menu.js' %}?ver=0.11111 defer></script>
 {% endblock script %}
 
 {% block content %}
@@ -79,12 +80,12 @@
 
         {% if gifticon_item %}
             <div class="count-button">
-                <input type="button" value="+ 제품 추가">
-                <input type="button" value="- 제품 삭제">
+                <input type="button" onclick="add();" value="+ 제품 추가">
+                <input type="button" onclick="remove();" value="- 제품 삭제">
             </div>
 
             <div class="item-list-container">
-                <div class="item-list">
+                <div class="item-list" id="menu1">
                     <h3 class="title">제품 1</h3>
                     <div class="select">
                         {% if id %}
@@ -133,7 +134,7 @@
                     {% endif %}
                 </div>
 
-                <div class="item-list">
+                <div class="item-list" id="menu2">
                     <h3 class="title">제품 2</h3>
                     <div class="select">
                         {% if id %}
@@ -182,7 +183,7 @@
                     {% endif %}
                 </div>
 
-                <div class="item-list">
+                <div class="item-list" id="menu3">
                     <h3 class="title">제품 3</h3>
                     <div class="select">
                         {% if id %}
@@ -231,7 +232,7 @@
                     {% endif %}
                 </div>
 
-                <div class="item-list">
+                <div class="item-list" id="menu4">
                     <h3 class="title">제품 4</h3>
                     <div class="select">
                         {% if id %}
@@ -280,7 +281,7 @@
                     {% endif %}
                 </div>
 
-                <div class="item-list">
+                <div class="item-list" id="menu5">
                     <h3 class="title">제품 5</h3>
                     <div class="select">
                         {% if id %}

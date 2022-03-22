@@ -48,5 +48,5 @@ window.onload = function info() {
             result.innerHTML += `기프티콘 가격과 동일해요! <br>
             바로 결제해주세요.`;
         }
-    }   
+    }
 }
