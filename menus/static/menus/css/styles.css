@@ -77,7 +77,6 @@ header .logo {
 header .logo img {
     width: var(--header-img-size);
     height: var(--header-img-size);
-    border-radius: 50%;
 }
 
 body {
@@ -124,26 +123,37 @@ body .menu li a.active {
     width: var(--width-size);
     height: var(--body-size);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    /* position: absolute;
+    top: 50%;
+    transform: translateY(-50%); */
     padding-top: var(--header-size);
     padding-bottom: var(--footer-size);
     z-index: 0;
 }
 
-.introduction p {
-    font-size: 1em;
-    margin-left: 2em;
-}
-
 .introduction img {
     width: var(--index-img-size);
     height: var(--index-img-size);
-    margin-right: 2em;
-    border-radius: 50%;
+    margin-top: 5em;
+}
+
+.introduction h3 {
+    font-size: 1.5em;
+    margin: 1em;
+}
+
+.introduction p {
+    font-size: 1em;
+    text-align: center;
+    margin: 0.5em 1.5em;
+}
+
+.introduction button {
+    width: 15em;
+    height: 2em;
+    margin-top: 2em;
 }
 
 footer {
