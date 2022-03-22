@@ -350,6 +350,31 @@ footer p {
     margin-top: 0.5em;
 }
 
+#info {
+    font-size: 0.8em;
+    color: red;
+    text-align: right;
+}
+
+.result .sum {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.result .sum button {
+    width: 1.5em;
+    height: 1.5em;
+    border: none;
+    background-color: white;
+    margin-left: 0.5em;
+}
+
+.result .sum button img {
+    width: 1.5em;
+    height: 1.5em;
+}
+
 .result h3 {
     width: 100%;
     text-align: right;
