@@ -331,7 +331,12 @@ footer p {
 }
 
 .item-list .select {
-    margin: 1em 0em;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.item-list .select select {
+    width: 10em;
 }
 
 .item {
@@ -372,11 +377,15 @@ footer p {
 }
 
 .count input {
+    width: 1.5em;
+    height: 1.5em;
     margin-right: 0.5em;
 }
 
-.count .item-count {
-    width: 1em;
+.btn-count {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .count-button {
@@ -384,7 +393,12 @@ footer p {
 }
 
 .count-button input {
+    height: 2em;
     margin-right: 0.5em;
+    padding: 0em 1em;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .result {
