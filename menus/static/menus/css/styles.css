@@ -65,6 +65,10 @@ select {
     height: 2em;
 }
 
+input {
+    height: 1.75em;
+}
+
 /* base */
 header {
     position: fixed;
@@ -340,6 +344,15 @@ footer p {
 
 .item .info {
     width: 10em;
+    height: var(--brand-img-size);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.item .info h3 {
+    font-size: 1em;
 }
 
 .item .image {
@@ -378,6 +391,11 @@ footer p {
     margin-top: 0.5em;
 }
 
+.result h3 {
+    width: 100%;
+    text-align: right;
+}
+
 #info {
     font-size: 0.8em;
     color: red;
@@ -390,24 +408,22 @@ footer p {
     align-items: center;
 }
 
+.result .sum h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
 .result .sum button {
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.25em;
+    height: 1.25em;
     border: none;
     background-color: white;
     margin-left: 0.5em;
 }
 
 .result .sum button img {
-    width: 1.5em;
-    height: 1.5em;
-}
-
-.result h3 {
-    width: 100%;
-    text-align: right;
-    font-size: 1.2em;
-    font-weight: bold;
+    width: 1.25em;
+    height: 1.25em;
 }
 
 .result #result {
