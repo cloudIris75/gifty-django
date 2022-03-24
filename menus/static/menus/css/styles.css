@@ -61,6 +61,10 @@ button a:hover {
     color: white;
 }
 
+select {
+    height: 2em;
+}
+
 /* base */
 header {
     position: fixed;
