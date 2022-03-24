@@ -2,24 +2,24 @@
     /* Size */
     --width-size: 23.438em;
     --height-size: 50em;
-    /* --header-size: 4.063em; */
-    --header-size: 5.983em;
+    --header-size: 4.063em;
     --footer-size: 5.938em;
     --body-size: calc(var(--height-size) - var(--header-size) - var(--footer-size));
     --border-size: 0.2em;
-    /* --header-img-size: 2.5em; */
     --header-img-size: 3em;
-    --index-img-size: 7.5em;
+    --index-img-size: 9.375em;
     --brand-img-size: 7.5em;
+    --btn-width-size: 14.375em;
+    --btn-height-size: 2.188em;
 
     /* Color */
+    --main-color: #6558F5;
     --border-color: #9EADBA;
-    --menu-color: blue;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0em;
+    padding: 0em;
 }
 
 html {
@@ -39,7 +39,26 @@ a:hover, a:active {
 }
 
 img {
-    border: 0;
+    border: 0em;
+}
+
+button {
+    background-color: white;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+}
+
+button a {
+    font-size: 1em;
+    color: var(--main-color);
+}
+
+button:hover {
+    background-color: var(--main-color);
+}
+
+button a:hover {
+    color: white;
 }
 
 /* base */
@@ -57,6 +76,11 @@ header {
     border-bottom-style: solid;
     border-bottom-width: var(--border-size);
     border-color: var(--border-color);
+}
+
+header .hamburger {
+    width: var(--header-img-size);
+    height: var(--header-img-size);
 }
 
 header .hamburger img {
@@ -111,11 +135,13 @@ body .menu li {
 }
 
 body .menu li a:hover {
-    color: var(--menu-color);
+    color: var(--main-color);
+    font-weight: bold;
 }
 
 body .menu li a.active {
-    color: var(--menu-color);
+    color: var(--main-color);
+    font-weight: bold;
 }
 
 /* index */
@@ -125,9 +151,6 @@ body .menu li a.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* position: absolute;
-    top: 50%;
-    transform: translateY(-50%); */
     padding-top: var(--header-size);
     padding-bottom: var(--footer-size);
     z-index: 0;
@@ -140,19 +163,19 @@ body .menu li a.active {
 }
 
 .introduction h3 {
-    font-size: 1.5em;
-    margin: 1em;
+    font-size: 1.75em;
+    margin: 1.5em 1em;
 }
 
 .introduction p {
     font-size: 1em;
     text-align: center;
-    margin: 0.5em 1.5em;
+    margin: 0.5em 1em;
 }
 
 .introduction button {
-    width: 15em;
-    height: 2em;
+    width: var(--btn-width-size);
+    height: var(--btn-height-size);
     margin-top: 2em;
 }
 
@@ -216,7 +239,8 @@ footer p {
 }
 
 .brand-title {
-    margin: 1em 0em;
+    font-size: 1.5em;
+    margin: 2em 0em;
 }
 
 .list {
@@ -239,16 +263,12 @@ footer p {
 .image {
     width: var(--brand-img-size);
     height: var(--brand-img-size);
-    border-radius: 50%;
     margin-bottom: 0.5em;
+    filter: drop-shadow(1px 1px 1px black);
 }
 
 .name {
     font-size: 0.74em;
-}
-
-.price {
-    font-size: 0.8em;
 }
 
 /* menu_list */
@@ -268,6 +288,10 @@ footer p {
 .select select {
     width: 7.5em;
     margin-right: 1em;
+}
+
+.price {
+    font-size: 0.75em;
 }
 
 /* calculator */
@@ -394,7 +418,7 @@ footer p {
 }
 
 .option button {
-    width: 15em;
-    height: 2em;
+    width: var(--btn-width-size);
+    height: var(--btn-height-size);
     margin-bottom: 0.5em;
 }
