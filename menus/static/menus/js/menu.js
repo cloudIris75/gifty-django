@@ -8,7 +8,6 @@ function add() {
     } else if (!document.getElementById('menu5').style.display || document.getElementById('menu5').style.display == 'none') {
         document.getElementById('menu5').style.display = 'flex';
     }
-    console.log(document.getElementById('menu2').style.display);
 }
 
 function remove() {

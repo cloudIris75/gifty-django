@@ -454,5 +454,5 @@ footer p {
 .option button {
     width: var(--btn-width-size);
     height: var(--btn-height-size);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em;
 }
