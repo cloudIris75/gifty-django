@@ -5,7 +5,7 @@
 {% block script %}
 <script src={% static 'menus/js/counter.js' %}?ver=0.2111 defer></script>
 <script src={% static 'menus/js/result.js' %}?ver=0.21111 defer></script>
-<script src={% static 'menus/js/menu.js' %}?ver=0.111111 defer></script>
+<!-- <script src={% static 'menus/js/menu.js' %}?ver=0.111111 defer></script> -->
 {% endblock script %}
 
 {% block content %}
@@ -57,7 +57,12 @@
                 {% endif %}
 
                 {% if id and gifticon_ct %}
-                <input type="text" name="gifticon-name" id="gifticon-name" onchange="form.submit();" value="{{gifticon_name}}">
+                <input type="text" list="gifticonlist" name="gifticon-name" id="gifticon-name" onchange="form.submit();" value="{{gifticon_name}}">
+                <datalist id="gifticonlist">
+                    {% for gifticon in gifticon_list %}
+                        <option value="{{gifticon.name}}">
+                    {% endfor %}
+                </datalist>
                 {% else %}
                 <input type="text" name="gifticon-name" id="gifticon-name" disabled>
                 {% endif %}
@@ -113,7 +118,12 @@
                         {% endif %}
         
                         {% if id and menu1_ct %}
-                        <input type="text" name="menu1-name" id="menu1-name" value="{{menu1_name}}">
+                        <input type="text" list="menu1list" name="menu1-name" id="menu1-name" value="{{menu1_name}}">
+                        <datalist id="menu1list">
+                            {% for menu1 in menu1_list %}
+                                <option value="{{menu1.name}}">
+                            {% endfor %}
+                        </datalist>
                         {% else %}
                         <input type="text" name="menu1-name" id="menu1-name" disabled>
                         {% endif %}
@@ -162,7 +172,12 @@
                         {% endif %}
         
                         {% if id and menu2_ct %}
-                        <input type="text" name="menu2-name" id="menu2-name" value="{{menu2_name}}">
+                        <input type="text" list="menu2list" name="menu2-name" id="menu2-name" value="{{menu2_name}}">
+                        <datalist id="menu2list">
+                            {% for menu2 in menu2_list %}
+                                <option value="{{menu2.name}}">
+                            {% endfor %}
+                        </datalist>
                         {% else %}
                         <input type="text" name="menu2-name" id="menu2-name" disabled>
                         {% endif %}
@@ -211,7 +226,12 @@
                         {% endif %}
         
                         {% if id and menu3_ct %}
-                        <input type="text" name="menu3-name" id="menu3-name" value="{{menu3_name}}">
+                        <input type="text" list="menu3list" name="menu3-name" id="menu3-name" value="{{menu3_name}}">
+                        <datalist id="menu3list">
+                            {% for menu3 in menu3_list %}
+                                <option value="{{menu3.name}}">
+                            {% endfor %}
+                        </datalist>
                         {% else %}
                         <input type="text" name="menu3-name" id="menu3-name" disabled>
                         {% endif %}
@@ -260,7 +280,12 @@
                         {% endif %}
         
                         {% if id and menu4_ct %}
-                        <input type="text" name="menu4-name" id="menu4-name" value="{{menu4_name}}">
+                        <input type="text" list="menu4list" name="menu4-name" id="menu4-name" value="{{menu4_name}}">
+                        <datalist id="menu4list">
+                            {% for menu4 in menu4_list %}
+                                <option value="{{menu4.name}}">
+                            {% endfor %}
+                        </datalist>
                         {% else %}
                         <input type="text" name="menu4-name" id="menu4-name" disabled>
                         {% endif %}
@@ -309,7 +334,12 @@
                         {% endif %}
         
                         {% if id and menu5_ct %}
-                        <input type="text" name="menu5-name" id="menu5-name" value="{{menu5_name}}">
+                        <input type="text" list="menu5list" name="menu5-name" id="menu5-name" value="{{menu5_name}}">
+                        <datalist id="menu5list">
+                            {% for menu5 in menu5_list %}
+                                <option value="{{menu5.name}}">
+                            {% endfor %}
+                        </datalist>
                         {% else %}
                         <input type="text" name="menu5-name" id="menu5-name" disabled>
                         {% endif %}

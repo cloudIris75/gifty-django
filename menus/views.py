@@ -99,49 +99,64 @@ class Calculator(View):
         menu5_ct = request.POST.get('menu5-ct', '')
         menu5_name = request.POST.get('menu5-name', '')
         menu5_count = request.POST.get('menu5-count', 1)
-        
-        # gifticons = Q()
-        # if id and id != '0':
-        #     gifticons &= Q(brand_id = id)
-        #     gifticon_list = Gifticon.objects.filter(gifticons)
-        #     if ct and ct != '':
-        #         gifticons &= Q(category = ct)
-        #         gifticon_list = Gifticon.objects.filter(gifticons)
-        # else:
-        #     gifticon_list = Gifticon.objects.all()
+
+        def item_list(model, id, ct):
+            global name_list
+            name = Q()
+            if id and id != '0':
+                name &= Q(brand_id = id)
+                name_list = model.objects.filter(name)
+                if ct and ct != '':
+                    name &= Q(category = ct)
+                    name_list = model.objects.filter(name)
+            else:
+                name_list = model.objects.all()
+            return name_list
 
         def item_price(model, name, count):
+            global item
+            global price
             if name:
-                global item
                 item = model.objects.get(name=name)
                 if count:
-                    global price
                     price = int(item.price) * int(count)
             else:
                 item = False
                 price = 0
             return item, price
 
+        item_list(Gifticon, id, gifticon_ct)
+        gifticon_list = name_list
         item_price(Gifticon, gifticon_name, gifticon_count)
         gifticon_item = item
         gifticon_price = price
 
+        item_list(Menu, id, menu1_ct)
+        menu1_list = name_list
         item_price(Menu, menu1_name, menu1_count)
         menu1_item = item
         menu1_price = price
 
+        item_list(Menu, id, menu2_ct)
+        menu2_list = name_list
         item_price(Menu, menu2_name, menu2_count)
         menu2_item = item
         menu2_price = price
 
+        item_list(Menu, id, menu3_ct)
+        menu3_list = name_list
         item_price(Menu, menu3_name, menu3_count)
         menu3_item = item
         menu3_price = price
 
+        item_list(Menu, id, menu4_ct)
+        menu4_list = name_list
         item_price(Menu, menu4_name, menu4_count)
         menu4_item = item
         menu4_price = price
 
+        item_list(Menu, id, menu5_ct)
+        menu5_list = name_list
         item_price(Menu, menu5_name, menu5_count)
         menu5_item = item
         menu5_price = price
@@ -155,37 +170,42 @@ class Calculator(View):
             'gifticon_ct': gifticon_ct,
             'gifticon_name': gifticon_name,
             'gifticon_count': int(gifticon_count),
-            # 'gifticon_list': gifticon_list,
+            'gifticon_list': gifticon_list,
             'gifticon_item': gifticon_item,
             'gifticon_price': gifticon_price,
 
             'menu1_ct': menu1_ct,
             'menu1_name': menu1_name,
             'menu1_count': int(menu1_count),
+            'menu1_list': menu1_list,
             'menu1_item': menu1_item,
             'menu1_price': menu1_price,
 
             'menu2_ct': menu2_ct,
             'menu2_name': menu2_name,
             'menu2_count': int(menu2_count),
+            'menu2_list': menu2_list,
             'menu2_item': menu2_item,
             'menu2_price': menu2_price,
 
             'menu3_ct': menu3_ct,
             'menu3_name': menu3_name,
             'menu3_count': int(menu3_count),
+            'menu3_list': menu3_list,
             'menu3_item': menu3_item,
             'menu3_price': menu3_price,
 
             'menu4_ct': menu4_ct,
             'menu4_name': menu4_name,
             'menu4_count': int(menu4_count),
+            'menu4_list': menu4_list,
             'menu4_item': menu4_item,
             'menu4_price': menu4_price,
 
             'menu5_ct': menu5_ct,
             'menu5_name': menu5_name,
             'menu5_count': int(menu5_count),
+            'menu5_list': menu5_list,
             'menu5_item': menu5_item,
             'menu5_price': menu5_price,
 
