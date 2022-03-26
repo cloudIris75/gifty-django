@@ -75,7 +75,7 @@ header {
     left: 0em;
     top: 0em;
     height: var(--header-size);
-    width: 100%;
+    width: var(--width-size);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -189,7 +189,7 @@ body .menu li a.active {
 
 footer {
     height: var(--footer-size);
-    width: 100%;
+    width: var(--width-size);
     position: fixed;
     left: 0em;
     bottom: 0em;
@@ -237,9 +237,6 @@ footer p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     padding-top: var(--header-size);
     padding-bottom: var(--footer-size);
     z-index: 0;
@@ -329,6 +326,9 @@ footer p {
 /* #menu2, #menu3, #menu4, #menu5 {
     display: none;
 } */
+#menu3, #menu4, #menu5 {
+    display: none;
+}
 
 .item-list .select {
     width: 90%;
