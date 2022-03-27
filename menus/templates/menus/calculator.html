@@ -5,7 +5,7 @@
 {% block script %}
 <script src={% static 'menus/js/counter.js' %}?ver=0.2111 defer></script>
 <script src={% static 'menus/js/result.js' %}?ver=0.21111 defer></script>
-<!-- <script src={% static 'menus/js/menu.js' %}?ver=0.111111 defer></script> -->
+<script src={% static 'menus/js/menu.js' %}?ver=0.111111 defer></script>
 {% endblock script %}
 
 {% block content %}
@@ -85,8 +85,8 @@
 
         {% if gifticon_item %}
             <div class="count-button">
-                <input type="button" onclick="add();" value="+ 제품 추가">
                 <input type="button" onclick="remove();" value="- 제품 삭제">
+                <input type="button" onclick="add();" value="+ 제품 추가">
             </div>
 
             <div class="item-list-container">
@@ -379,26 +379,4 @@
         <button><a href={% url 'calculator' %}>초기화하기</a></button>
     </div>
 </div>
-
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
-        crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    $(document).on('submit', '#form', function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '{% url "calculator" %}',
-            data:
-            {
-                id: $('input[name=id]').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-            },
-            success: function() {
-                console.log('success');
-            }
-        });
-    });
-</script> -->
 {% endblock content %}
