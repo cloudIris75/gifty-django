@@ -1,23 +1,23 @@
 function add() {
-    if (!document.getElementById('menu2').style.display || document.getElementById('menu2').style.display == 'none') {
-        document.getElementById('menu2').style.display = 'flex';
-    } else if (!document.getElementById('menu3').style.display || document.getElementById('menu3').style.display == 'none') {
-        document.getElementById('menu3').style.display = 'flex';
-    } else if (!document.getElementById('menu4').style.display || document.getElementById('menu4').style.display == 'none') {
-        document.getElementById('menu4').style.display = 'flex';
-    } else if (!document.getElementById('menu5').style.display || document.getElementById('menu5').style.display == 'none') {
-        document.getElementById('menu5').style.display = 'flex';
+    if (document.getElementById('menu2').classList.contains != 'active') {
+        document.getElementById('menu2').classList.add = 'active';
+    } else if (document.getElementById('menu3').classList.contains != 'active') {
+        document.getElementById('menu3').classList.add = 'active';
+    } else if (document.getElementById('menu4').classList.contains != 'active') {
+        document.getElementById('menu4').classList.add = 'active';
+    } else if (document.getElementById('menu5').classList.contains != 'active') {
+        document.getElementById('menu5').classList.add = 'active';
     }
 }
 
 function remove() {
-    if (document.getElementById('menu5').style.display == 'flex') {
-        document.getElementById('menu5').style.display = 'none';
-    } else if (document.getElementById('menu4').style.display == 'flex') {
-        document.getElementById('menu4').style.display = 'none';
-    } else if (document.getElementById('menu3').style.display == 'flex') {
-        document.getElementById('menu3').style.display = 'none';
-    } else if (document.getElementById('menu2').style.display == 'flex') {
-        document.getElementById('menu2').style.display = 'none';
+    if (document.getElementById('menu5').classList.contains == 'active') {
+        document.getElementById('menu5').classList.remove = 'active';
+    } else if (document.getElementById('menu4').classList.contains == 'active') {
+        document.getElementById('menu4').classList.remove = 'active';
+    } else if (document.getElementById('menu3').classList.contains == 'active') {
+        document.getElementById('menu3').classList.remove = 'active';
+    } else if (document.getElementById('menu2').classList.contains == 'active') {
+        document.getElementById('menu2').classList.remove = 'active';
     }
 }
