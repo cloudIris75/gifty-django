@@ -402,14 +402,14 @@ footer p {
     margin-top: 0.5em;
 }
 
-.result h3 {
-    width: 100%;
+.result p {
+    font-size: 0.8em;
+    color: red;
     text-align: right;
 }
 
-#info {
-    font-size: 0.8em;
-    color: red;
+.result h3 {
+    width: 100%;
     text-align: right;
 }
 
