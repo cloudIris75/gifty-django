@@ -6,7 +6,6 @@
     --footer-size: 5.938em;
     --body-size: calc(var(--height-size) - var(--header-size) - var(--footer-size));
     --border-size: 0.2em;
-    --header-img-size: 3em;
     --index-img-size: 9.375em;
     --brand-img-size: 7.5em;
     --btn-width-size: 14.375em;
@@ -87,28 +86,27 @@ header {
 }
 
 header .hamburger {
-    width: var(--header-img-size);
-    height: var(--header-img-size);
-}
-
-header .hamburger img {
-    width: var(--header-img-size);
-    height: var(--header-img-size);
-    border-radius: 50%;
+    width: 2.3em;
+    height: 2.3em;
     margin-left: 1em;
 }
 
+header .hamburger img {
+    width: 2.3em;
+    height: 2.3em;
+}
+
 header .logo {
-    width: var(--header-img-size);
-    height: var(--header-img-size);
+    width: 3em;
+    height: 3em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
 header .logo img {
-    width: var(--header-img-size);
-    height: var(--header-img-size);
+    width: 3em;
+    height: 3em;
 }
 
 body {
@@ -269,7 +267,9 @@ footer p {
     width: var(--brand-img-size);
     height: var(--brand-img-size);
     margin-bottom: 0.5em;
-    filter: drop-shadow(1px 1px 1px black);
+    /* filter: drop-shadow(1px 1px 1px black); */
+    /* box-shadow: 1px 1px 1px black; */
+    border-radius: 50%;
 }
 
 .name {
