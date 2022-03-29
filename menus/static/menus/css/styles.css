@@ -357,6 +357,13 @@ footer p {
     font-size: 1em;
 }
 
+.item .info .name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
 .item .image {
     margin-right: 2em;
     margin-bottom: 0em;
