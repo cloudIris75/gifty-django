@@ -5,7 +5,7 @@
 {% block script %}
 <script src={% static 'menus/js/counter.js' %}?ver=0.2111 defer></script>
 <script src={% static 'menus/js/result.js' %}?ver=0.21111 defer></script>
-<script src={% static 'menus/js/menu.js' %}?ver=1.22 defer></script>
+<script src={% static 'menus/js/menu.js' %}?ver=1.22111 defer></script>
 {% endblock script %}
 
 {% block content %}
@@ -83,296 +83,294 @@
             {% endif %}
         </div>
 
-        {% if gifticon_item %}
-            <div class="count-button">
-                <input type="button" onclick="remove();" value="- 제품 삭제">
-                <input type="button" onclick="add();" value="+ 제품 추가">
+        <div class="count-button">
+            <input type="button" onclick="removeClass();" value="- 제품 삭제">
+            <input type="button" onclick="addClass();" value="+ 제품 추가">
+        </div>
+
+        <div class="item-list-container">
+            <div class="item-list active" id="menu1">
+                <h3 class="title">제품 1</h3>
+                <div class="select">
+                    {% if id %}
+                    <select name="menu1-ct">
+                        <option value="" selected>카테고리</option>
+                        {% with '음료 푸드 상품' as list %}
+                            {% for category in list.split %}
+                                {% if menu1_ct %}
+                                    {% if category == menu1_ct %}
+                                        <option value={{category}} selected>{{category}}</option>
+                                    {% else %}
+                                        <option value={{category}}>{{category}}</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value={{category}}>{{category}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                    {% else %}
+                    <select>
+                        <option selected>카테고리</option>
+                        <option disabled>브랜드를 먼저 선택해 주세요!</option>
+                    </select>
+                    {% endif %}
+    
+                    {% if id and menu1_ct %}
+                    <input type="text" list="menu1list" name="menu1-name" id="menu1-name" value="{{menu1_name}}">
+                    <datalist id="menu1list">
+                        {% for menu1 in menu1_list %}
+                            <option value="{{menu1.name}}">
+                        {% endfor %}
+                    </datalist>
+                    {% else %}
+                    <input type="text" name="menu1-name" id="menu1-name" disabled>
+                    {% endif %}
+                </div>
+                {% if id and menu1_ct and menu1_item %}
+                <div class="item">
+                    <img class="image" src={% get_static_prefix %}{{menu1_item.img_path}}>
+                    <div class="info">
+                        <h3 class="name">{{menu1_item.name}}</h3>
+                        <h3 class="price" id="menu1-price">{{menu1_price|intcomma}}원</h3>
+                        <div class="count">
+                            <input class="btn-count" type="button" onclick="counter('minus', 'menu1-count');" value="-">
+                            <input class="item-count" name="menu1-count" id="menu1-count" value={{menu1_count}}>
+                            <input class="btn-count" type="button" onclick="counter('plus', 'menu1-count');" value="+">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
 
-            <div class="item-list-container">
-                <div class="item-list active" id="menu1">
-                    <h3 class="title">제품 1</h3>
-                    <div class="select">
-                        {% if id %}
-                        <select name="menu1-ct">
-                            <option value="" selected>카테고리</option>
-                            {% with '음료 푸드 상품' as list %}
-                                {% for category in list.split %}
-                                    {% if menu1_ct %}
-                                        {% if category == menu1_ct %}
-                                            <option value={{category}} selected>{{category}}</option>
-                                        {% else %}
-                                            <option value={{category}}>{{category}}</option>
-                                        {% endif %}
+            <div class="item-list" id="menu2">
+                <h3 class="title">제품 2</h3>
+                <div class="select">
+                    {% if id %}
+                    <select name="menu2-ct">
+                        <option value="" selected>카테고리</option>
+                        {% with '음료 푸드 상품' as list %}
+                            {% for category in list.split %}
+                                {% if menu2_ct %}
+                                    {% if category == menu2_ct %}
+                                        <option value={{category}} selected>{{category}}</option>
                                     {% else %}
                                         <option value={{category}}>{{category}}</option>
                                     {% endif %}
-                                {% endfor %}
-                            {% endwith %}
-                        </select>
-                        {% else %}
-                        <select>
-                            <option selected>카테고리</option>
-                            <option disabled>브랜드를 먼저 선택해 주세요!</option>
-                        </select>
-                        {% endif %}
-        
-                        {% if id and menu1_ct %}
-                        <input type="text" list="menu1list" name="menu1-name" id="menu1-name" value="{{menu1_name}}">
-                        <datalist id="menu1list">
-                            {% for menu1 in menu1_list %}
-                                <option value="{{menu1.name}}">
+                                {% else %}
+                                    <option value={{category}}>{{category}}</option>
+                                {% endif %}
                             {% endfor %}
-                        </datalist>
-                        {% else %}
-                        <input type="text" name="menu1-name" id="menu1-name" disabled>
-                        {% endif %}
-                    </div>
-                    {% if id and menu1_ct and menu1_item %}
-                    <div class="item">
-                        <img class="image" src={% get_static_prefix %}{{menu1_item.img_path}}>
-                        <div class="info">
-                            <h3 class="name">{{menu1_item.name}}</h3>
-                            <h3 class="price" id="menu1-price">{{menu1_price|intcomma}}원</h3>
-                            <div class="count">
-                                <input class="btn-count" type="button" onclick="counter('minus', 'menu1-count');" value="-">
-                                <input class="item-count" name="menu1-count" id="menu1-count" value={{menu1_count}}>
-                                <input class="btn-count" type="button" onclick="counter('plus', 'menu1-count');" value="+">
-                            </div>
-                        </div>
-                    </div>
+                        {% endwith %}
+                    </select>
+                    {% else %}
+                    <select>
+                        <option selected>카테고리</option>
+                        <option disabled>브랜드를 먼저 선택해 주세요!</option>
+                    </select>
+                    {% endif %}
+    
+                    {% if id and menu2_ct %}
+                    <input type="text" list="menu2list" name="menu2-name" id="menu2-name" value="{{menu2_name}}">
+                    <datalist id="menu2list">
+                        {% for menu2 in menu2_list %}
+                            <option value="{{menu2.name}}">
+                        {% endfor %}
+                    </datalist>
+                    {% else %}
+                    <input type="text" name="menu2-name" id="menu2-name" disabled>
                     {% endif %}
                 </div>
-
-                <div class="item-list" id="menu2">
-                    <h3 class="title">제품 2</h3>
-                    <div class="select">
-                        {% if id %}
-                        <select name="menu2-ct">
-                            <option value="" selected>카테고리</option>
-                            {% with '음료 푸드 상품' as list %}
-                                {% for category in list.split %}
-                                    {% if menu2_ct %}
-                                        {% if category == menu2_ct %}
-                                            <option value={{category}} selected>{{category}}</option>
-                                        {% else %}
-                                            <option value={{category}}>{{category}}</option>
-                                        {% endif %}
-                                    {% else %}
-                                        <option value={{category}}>{{category}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            {% endwith %}
-                        </select>
-                        {% else %}
-                        <select>
-                            <option selected>카테고리</option>
-                            <option disabled>브랜드를 먼저 선택해 주세요!</option>
-                        </select>
-                        {% endif %}
-        
-                        {% if id and menu2_ct %}
-                        <input type="text" list="menu2list" name="menu2-name" id="menu2-name" value="{{menu2_name}}">
-                        <datalist id="menu2list">
-                            {% for menu2 in menu2_list %}
-                                <option value="{{menu2.name}}">
-                            {% endfor %}
-                        </datalist>
-                        {% else %}
-                        <input type="text" name="menu2-name" id="menu2-name" disabled>
-                        {% endif %}
-                    </div>
-                    {% if id and menu2_ct and menu2_item %}
-                    <div class="item">
-                        <img class="image" src={% get_static_prefix %}{{menu2_item.img_path}}>
-                        <div class="info">
-                            <h3 class="name">{{menu2_item.name}}</h3>
-                            <h3 class="price" id="menu2-price">{{menu2_price|intcomma}}원</h3>
-                            <div class="count">
-                                <input class="btn-count" type="button" onclick="counter('minus', 'menu2-count');" value="-">
-                                <input class="item-count" name="menu2-count" id="menu2-count" value={{menu2_count}}>
-                                <input class="btn-count" type="button" onclick="counter('plus', 'menu2-count');" value="+">
-                            </div>
+                {% if id and menu2_ct and menu2_item %}
+                <div class="item">
+                    <img class="image" src={% get_static_prefix %}{{menu2_item.img_path}}>
+                    <div class="info">
+                        <h3 class="name">{{menu2_item.name}}</h3>
+                        <h3 class="price" id="menu2-price">{{menu2_price|intcomma}}원</h3>
+                        <div class="count">
+                            <input class="btn-count" type="button" onclick="counter('minus', 'menu2-count');" value="-">
+                            <input class="item-count" name="menu2-count" id="menu2-count" value={{menu2_count}}>
+                            <input class="btn-count" type="button" onclick="counter('plus', 'menu2-count');" value="+">
                         </div>
                     </div>
-                    {% endif %}
                 </div>
-
-                <div class="item-list" id="menu3">
-                    <h3 class="title">제품 3</h3>
-                    <div class="select">
-                        {% if id %}
-                        <select name="menu3-ct">
-                            <option value="" selected>카테고리</option>
-                            {% with '음료 푸드 상품' as list %}
-                                {% for category in list.split %}
-                                    {% if menu3_ct %}
-                                        {% if category == menu3_ct %}
-                                            <option value={{category}} selected>{{category}}</option>
-                                        {% else %}
-                                            <option value={{category}}>{{category}}</option>
-                                        {% endif %}
-                                    {% else %}
-                                        <option value={{category}}>{{category}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            {% endwith %}
-                        </select>
-                        {% else %}
-                        <select>
-                            <option selected>카테고리</option>
-                            <option disabled>브랜드를 먼저 선택해 주세요!</option>
-                        </select>
-                        {% endif %}
-        
-                        {% if id and menu3_ct %}
-                        <input type="text" list="menu3list" name="menu3-name" id="menu3-name" value="{{menu3_name}}">
-                        <datalist id="menu3list">
-                            {% for menu3 in menu3_list %}
-                                <option value="{{menu3.name}}">
-                            {% endfor %}
-                        </datalist>
-                        {% else %}
-                        <input type="text" name="menu3-name" id="menu3-name" disabled>
-                        {% endif %}
-                    </div>
-                    {% if id and menu3_ct and menu3_item %}
-                    <div class="item">
-                        <img class="image" src={% get_static_prefix %}{{menu3_item.img_path}}>
-                        <div class="info">
-                            <h3 class="name">{{menu3_item.name}}</h3>
-                            <h3 class="price" id="menu3-price">{{menu3_price|intcomma}}원</h3>
-                            <div class="count">
-                                <input class="btn-count" type="button" onclick="counter('minus', 'menu3-count');" value="-">
-                                <input class="item-count" name="menu3-count" id="menu3-count" value={{menu3_count}}>
-                                <input class="btn-count" type="button" onclick="counter('plus', 'menu3-count');" value="+">
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-
-                <div class="item-list" id="menu4">
-                    <h3 class="title">제품 4</h3>
-                    <div class="select">
-                        {% if id %}
-                        <select name="menu4-ct">
-                            <option value="" selected>카테고리</option>
-                            {% with '음료 푸드 상품' as list %}
-                                {% for category in list.split %}
-                                    {% if menu4_ct %}
-                                        {% if category == menu4_ct %}
-                                            <option value={{category}} selected>{{category}}</option>
-                                        {% else %}
-                                            <option value={{category}}>{{category}}</option>
-                                        {% endif %}
-                                    {% else %}
-                                        <option value={{category}}>{{category}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            {% endwith %}
-                        </select>
-                        {% else %}
-                        <select>
-                            <option selected>카테고리</option>
-                            <option disabled>브랜드를 먼저 선택해 주세요!</option>
-                        </select>
-                        {% endif %}
-        
-                        {% if id and menu4_ct %}
-                        <input type="text" list="menu4list" name="menu4-name" id="menu4-name" value="{{menu4_name}}">
-                        <datalist id="menu4list">
-                            {% for menu4 in menu4_list %}
-                                <option value="{{menu4.name}}">
-                            {% endfor %}
-                        </datalist>
-                        {% else %}
-                        <input type="text" name="menu4-name" id="menu4-name" disabled>
-                        {% endif %}
-                    </div>
-                    {% if id and menu4_ct and menu4_item %}
-                    <div class="item">
-                        <img class="image" src={% get_static_prefix %}{{menu4_item.img_path}}>
-                        <div class="info">
-                            <h3 class="name">{{menu4_item.name}}</h3>
-                            <h3 class="price" id="menu4-price">{{menu4_price|intcomma}}원</h3>
-                            <div class="count">
-                                <input class="btn-count" type="button" onclick="counter('minus', 'menu4-count');" value="-">
-                                <input class="item-count" name="menu4-count" id="menu4-count" value={{menu4_count}}>
-                                <input class="btn-count" type="button" onclick="counter('plus', 'menu4-count');" value="+">
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-
-                <div class="item-list" id="menu5">
-                    <h3 class="title">제품 5</h3>
-                    <div class="select">
-                        {% if id %}
-                        <select name="menu5-ct">
-                            <option value="" selected>카테고리</option>
-                            {% with '음료 푸드 상품' as list %}
-                                {% for category in list.split %}
-                                    {% if menu5_ct %}
-                                        {% if category == menu5_ct %}
-                                            <option value={{category}} selected>{{category}}</option>
-                                        {% else %}
-                                            <option value={{category}}>{{category}}</option>
-                                        {% endif %}
-                                    {% else %}
-                                        <option value={{category}}>{{category}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            {% endwith %}
-                        </select>
-                        {% else %}
-                        <select>
-                            <option selected>카테고리</option>
-                            <option disabled>브랜드를 먼저 선택해 주세요!</option>
-                        </select>
-                        {% endif %}
-        
-                        {% if id and menu5_ct %}
-                        <input type="text" list="menu5list" name="menu5-name" id="menu5-name" value="{{menu5_name}}">
-                        <datalist id="menu5list">
-                            {% for menu5 in menu5_list %}
-                                <option value="{{menu5.name}}">
-                            {% endfor %}
-                        </datalist>
-                        {% else %}
-                        <input type="text" name="menu5-name" id="menu5-name" disabled>
-                        {% endif %}
-                    </div>
-                    {% if id and menu5_ct and menu5_item %}
-                    <div class="item">
-                        <img class="image" src={% get_static_prefix %}{{menu5_item.img_path}}>
-                        <div class="info">
-                            <h3 class="name">{{menu5_item.name}}</h3>
-                            <h3 class="price" id="menu5-price">{{menu5_price|intcomma}}원</h3>
-                            <div class="count">
-                                <input class="btn-count" type="button" onclick="counter('minus', 'menu5-count');" value="-">
-                                <input class="item-count" name="menu5-count" id="menu5-count" value={{menu5_count}}>
-                                <input class="btn-count" type="button" onclick="counter('plus', 'menu5-count');" value="+">
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
+                {% endif %}
             </div>
 
-            {% if menu1_price or menu2_price or menu3_price or menu4_price or menu5_price %}
-            <div class="result">
-                <p>기프티콘은 가격이 동일하거나 그 이상인 경우에만<br>사용이 가능합니다. (브랜드별로 다를 수 있음)</p>
-                <div class="sum">
-                    <h3>{{result|intcomma}}원</h3>
-                    <img src={% static 'menus/images/info.png' %}>
+            <div class="item-list" id="menu3">
+                <h3 class="title">제품 3</h3>
+                <div class="select">
+                    {% if id %}
+                    <select name="menu3-ct">
+                        <option value="" selected>카테고리</option>
+                        {% with '음료 푸드 상품' as list %}
+                            {% for category in list.split %}
+                                {% if menu3_ct %}
+                                    {% if category == menu3_ct %}
+                                        <option value={{category}} selected>{{category}}</option>
+                                    {% else %}
+                                        <option value={{category}}>{{category}}</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value={{category}}>{{category}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                    {% else %}
+                    <select>
+                        <option selected>카테고리</option>
+                        <option disabled>브랜드를 먼저 선택해 주세요!</option>
+                    </select>
+                    {% endif %}
+    
+                    {% if id and menu3_ct %}
+                    <input type="text" list="menu3list" name="menu3-name" id="menu3-name" value="{{menu3_name}}">
+                    <datalist id="menu3list">
+                        {% for menu3 in menu3_list %}
+                            <option value="{{menu3.name}}">
+                        {% endfor %}
+                    </datalist>
+                    {% else %}
+                    <input type="text" name="menu3-name" id="menu3-name" disabled>
+                    {% endif %}
                 </div>
-                <h3 id="result"></h3>
+                {% if id and menu3_ct and menu3_item %}
+                <div class="item">
+                    <img class="image" src={% get_static_prefix %}{{menu3_item.img_path}}>
+                    <div class="info">
+                        <h3 class="name">{{menu3_item.name}}</h3>
+                        <h3 class="price" id="menu3-price">{{menu3_price|intcomma}}원</h3>
+                        <div class="count">
+                            <input class="btn-count" type="button" onclick="counter('minus', 'menu3-count');" value="-">
+                            <input class="item-count" name="menu3-count" id="menu3-count" value={{menu3_count}}>
+                            <input class="btn-count" type="button" onclick="counter('plus', 'menu3-count');" value="+">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
-        {% endif %}
+
+            <div class="item-list" id="menu4">
+                <h3 class="title">제품 4</h3>
+                <div class="select">
+                    {% if id %}
+                    <select name="menu4-ct">
+                        <option value="" selected>카테고리</option>
+                        {% with '음료 푸드 상품' as list %}
+                            {% for category in list.split %}
+                                {% if menu4_ct %}
+                                    {% if category == menu4_ct %}
+                                        <option value={{category}} selected>{{category}}</option>
+                                    {% else %}
+                                        <option value={{category}}>{{category}}</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value={{category}}>{{category}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                    {% else %}
+                    <select>
+                        <option selected>카테고리</option>
+                        <option disabled>브랜드를 먼저 선택해 주세요!</option>
+                    </select>
+                    {% endif %}
+    
+                    {% if id and menu4_ct %}
+                    <input type="text" list="menu4list" name="menu4-name" id="menu4-name" value="{{menu4_name}}">
+                    <datalist id="menu4list">
+                        {% for menu4 in menu4_list %}
+                            <option value="{{menu4.name}}">
+                        {% endfor %}
+                    </datalist>
+                    {% else %}
+                    <input type="text" name="menu4-name" id="menu4-name" disabled>
+                    {% endif %}
+                </div>
+                {% if id and menu4_ct and menu4_item %}
+                <div class="item">
+                    <img class="image" src={% get_static_prefix %}{{menu4_item.img_path}}>
+                    <div class="info">
+                        <h3 class="name">{{menu4_item.name}}</h3>
+                        <h3 class="price" id="menu4-price">{{menu4_price|intcomma}}원</h3>
+                        <div class="count">
+                            <input class="btn-count" type="button" onclick="counter('minus', 'menu4-count');" value="-">
+                            <input class="item-count" name="menu4-count" id="menu4-count" value={{menu4_count}}>
+                            <input class="btn-count" type="button" onclick="counter('plus', 'menu4-count');" value="+">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="item-list" id="menu5">
+                <h3 class="title">제품 5</h3>
+                <div class="select">
+                    {% if id %}
+                    <select name="menu5-ct">
+                        <option value="" selected>카테고리</option>
+                        {% with '음료 푸드 상품' as list %}
+                            {% for category in list.split %}
+                                {% if menu5_ct %}
+                                    {% if category == menu5_ct %}
+                                        <option value={{category}} selected>{{category}}</option>
+                                    {% else %}
+                                        <option value={{category}}>{{category}}</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value={{category}}>{{category}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                    {% else %}
+                    <select>
+                        <option selected>카테고리</option>
+                        <option disabled>브랜드를 먼저 선택해 주세요!</option>
+                    </select>
+                    {% endif %}
+    
+                    {% if id and menu5_ct %}
+                    <input type="text" list="menu5list" name="menu5-name" id="menu5-name" value="{{menu5_name}}">
+                    <datalist id="menu5list">
+                        {% for menu5 in menu5_list %}
+                            <option value="{{menu5.name}}">
+                        {% endfor %}
+                    </datalist>
+                    {% else %}
+                    <input type="text" name="menu5-name" id="menu5-name" disabled>
+                    {% endif %}
+                </div>
+                {% if id and menu5_ct and menu5_item %}
+                <div class="item">
+                    <img class="image" src={% get_static_prefix %}{{menu5_item.img_path}}>
+                    <div class="info">
+                        <h3 class="name">{{menu5_item.name}}</h3>
+                        <h3 class="price" id="menu5-price">{{menu5_price|intcomma}}원</h3>
+                        <div class="count">
+                            <input class="btn-count" type="button" onclick="counter('minus', 'menu5-count');" value="-">
+                            <input class="item-count" name="menu5-count" id="menu5-count" value={{menu5_count}}>
+                            <input class="btn-count" type="button" onclick="counter('plus', 'menu5-count');" value="+">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
     </form>
+
+    {% if menu1_price or menu2_price or menu3_price or menu4_price or menu5_price %}
+    <div class="result">
+        <p>기프티콘은 가격이 동일하거나 그 이상인 경우에만<br>사용이 가능합니다. (브랜드별로 다를 수 있음)</p>
+        <div class="sum">
+            <h3>{{result|intcomma}}원</h3>
+            <img src={% static 'menus/images/info.png' %}>
+        </div>
+        <h3 id="result"></h3>
+    </div>
+    {% endif %}
 
     <div class="option">
         <button><a href={% url 'menu-list' %}>추가할 수 있는 메뉴 보러가기</a></button>

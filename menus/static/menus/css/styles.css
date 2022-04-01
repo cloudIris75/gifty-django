@@ -312,8 +312,7 @@ footer p {
 
 .item-list {
     width: calc(var(--width-size) - 2em);
-    /* display: none; */
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     margin: 0em 1em;
