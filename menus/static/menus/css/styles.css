@@ -8,8 +8,8 @@
     --border-size: 0.2em;
     --index-img-size: 9.375em;
     --brand-img-size: 7.5em;
-    --btn-width-size: 14.375em;
-    --btn-height-size: 2.188em;
+    --btn-width-size: 15em;
+    --btn-height-size: 2.3em;
 
     /* Color */
     --main-color: #6558F5;
@@ -17,6 +17,7 @@
 }
 
 * {
+    font-family: 'Noto Sans KR', sans-serif;
     margin: 0em;
     padding: 0em;
 }
@@ -60,12 +61,8 @@ button a:hover {
     color: white;
 }
 
-select {
-    height: 2em;
-}
-
-input {
-    height: 1.75em;
+select, input {
+    height: var(--btn-height-size);
 }
 
 /* base */
@@ -284,15 +281,16 @@ footer p {
 }
 
 .select {
+    width: 20em;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     margin-top: 1.5em;
 }
 
 .select select {
     width: 7.5em;
-    margin-right: 1em;
 }
 
 .price {
@@ -333,7 +331,11 @@ footer p {
 }
 
 .item-list .select select {
-    width: 10em;
+    width: 9em;
+}
+
+.item-list input {
+    width: 12em;
 }
 
 .item {
@@ -346,7 +348,7 @@ footer p {
 
 .item .info {
     width: 10em;
-    height: var(--brand-img-size);
+    height: calc(var(--brand-img-size) + 1em);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -371,6 +373,7 @@ footer p {
 
 .info h3 {
     margin-bottom: 0.5em;
+
     font-size: 0.85em;
 }
 
