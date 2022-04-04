@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="wrap">
+    <h2 class="page-title">메뉴</h2>
     <form method="post" action={% url 'menu-list' %} onChange="this.submit();">
         {% csrf_token %}
         <div class="select">

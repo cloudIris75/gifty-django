@@ -10,6 +10,7 @@
 
 {% block content %}
 <div class="wrap">
+    <h2 class="page-title">계산기</h2>
     <form class="form" id="form" method="post" action={% url 'calculator' %} onchange="this.submit();">
         {% csrf_token %}
         <div class="select">
