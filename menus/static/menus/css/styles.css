@@ -396,6 +396,12 @@ footer p {
     border-radius: 10px;
 }
 
+.message {
+    margin-top: 1em;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
 .count-button {
     display: none;
     margin-top: 1em;
@@ -434,6 +440,8 @@ footer p {
 .result .sum h3 {
     font-size: 1.5em;
     font-weight: bold;
+    margin: 0.2em 0em;
+    margin-right: 0.1em;
 }
 
 .result .sum img {
