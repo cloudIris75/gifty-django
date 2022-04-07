@@ -331,11 +331,12 @@ footer p {
 
 .item-list .select {
     width: 90%;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .item-list .select select {
     width: 9em;
+    margin-right: 1em;
 }
 
 .item-list input {
