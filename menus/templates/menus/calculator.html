@@ -6,10 +6,11 @@
 <script src={% static 'menus/js/counter.js' %}?ver=0.2111 defer></script>
 <script src={% static 'menus/js/result.js' %}?ver=0.21111 defer></script>
 <script src={% static 'menus/js/menu.js' %}?ver=1.22111 defer></script>
+<script src={% static 'menus/js/down.js' %}?ver=0.111 defer></script>
 {% endblock script %}
 
 {% block content %}
-<div class="wrap">
+<div class="wrap" id="wrap">
     <h2 class="page-title">계산기</h2>
     <form class="form" id="form" method="post" action={% url 'calculator' %} onchange="this.submit();">
         {% csrf_token %}
@@ -374,6 +375,8 @@
         <h3 id="result"></h3>
     </div>
     {% endif %}
+
+    <button class="down" id="down"><img src={% static 'menus/images/down.png' %}></button>
 
     <div class="option">
         <button><a href={% url 'menu-list' %}>추가할 수 있는 메뉴 보러가기</a></button>

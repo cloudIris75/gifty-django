@@ -396,7 +396,7 @@ footer p {
 .btn-count {
     background-color: white;
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 
 .message {
@@ -455,6 +455,31 @@ footer p {
 .result #result {
     font-size: 1em;
     color: var(--main-color);
+}
+
+.down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    bottom: calc(var(--footer-size) + 3em);
+    right: 1em;
+    opacity: 70%;
+    width: 3em;
+    height: 3em;
+    background-color: var(--border-color);
+    border: none;
+    border-radius: 50%;
+}
+
+.down:hover {
+    background-color: var(--border-color);
+}
+
+.down img {
+    width: 2em;
+    height: 2em;
 }
 
 .option {
