@@ -420,9 +420,14 @@ footer p {
 }
 
 .result p {
+    visibility: hidden;
     font-size: 0.8em;
     color: red;
     text-align: right;
+}
+
+.result p.active {
+    visibility: visible;
 }
 
 .result h3 {
@@ -443,7 +448,17 @@ footer p {
     margin-right: 0.1em;
 }
 
-.result .sum img {
+.result .sum button {
+    width: 1em;
+    height: 1em;
+    border: none;
+}
+
+.result .sum button:hover {
+    background-color: white;
+}
+
+.result .sum button img {
     width: 1em;
     height: 1em;
 }

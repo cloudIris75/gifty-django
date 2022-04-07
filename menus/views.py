@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.exceptions import ValidationError
 from django.views.generic import TemplateView, ListView, View
 from django.db.models import Q
 from menus.models import Brand, Gifticon, Menu
@@ -113,6 +114,13 @@ class Calculator(View):
                 name_list = model.objects.all()
             return name_list
 
+        def validate_name(model, name):
+            if name and name != '':
+                try:
+                    model.objects.get(name=name)
+                except:
+                    raise ValidationError('메뉴명을 확인해 주세요!')
+
         def item_price(model, name, count):
             global item
             global price
@@ -127,6 +135,7 @@ class Calculator(View):
 
         item_list(Gifticon, id, gifticon_ct)
         gifticon_list = name_list
+        validate_name(Gifticon, gifticon_name)
         item_price(Gifticon, gifticon_name, gifticon_count)
         gifticon_item = item
         gifticon_price = price

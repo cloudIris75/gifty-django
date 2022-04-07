@@ -8,3 +8,7 @@ button.onclick = function() {
         behavior: 'smooth'
     });
 };
+
+function view() {
+    document.getElementById('message').classList.toggle('active');
+};

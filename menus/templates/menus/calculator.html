@@ -4,9 +4,9 @@
 
 {% block script %}
 <script src={% static 'menus/js/counter.js' %}?ver=0.2111 defer></script>
-<script src={% static 'menus/js/result.js' %}?ver=0.21111 defer></script>
+<script src={% static 'menus/js/result.js' %}?ver=0.22 defer></script>
 <script src={% static 'menus/js/menu.js' %}?ver=1.22111 defer></script>
-<script src={% static 'menus/js/down.js' %}?ver=0.111 defer></script>
+<script src={% static 'menus/js/button.js' %}?ver=0.1111 defer></script>
 {% endblock script %}
 
 {% block content %}
@@ -367,10 +367,10 @@
 
     {% if menu1_price or menu2_price or menu3_price or menu4_price or menu5_price %}
     <div class="result">
-        <p>기프티콘은 가격이 동일하거나 그 이상인 경우에만<br>사용이 가능합니다. (브랜드별로 다를 수 있음)</p>
+        <p id="message">기프티콘은 가격이 동일하거나 그 이상인 경우에만<br>사용이 가능합니다. (브랜드별로 다를 수 있음)</p>
         <div class="sum">
             <h3>{{result|intcomma}}원</h3>
-            <img src={% static 'menus/images/info.png' %}>
+            <button onclick="view();"><img src={% static 'menus/images/info.png' %}></button>
         </div>
         <h3 id="result"></h3>
     </div>
