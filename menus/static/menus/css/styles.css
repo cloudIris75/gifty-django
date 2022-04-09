@@ -475,7 +475,7 @@ footer p {
     position: fixed;
     z-index: 1;
     bottom: calc(var(--footer-size) + 2.5em);
-    right: 1em;
+    left: var(--width-size);
     opacity: 70%;
     width: 3em;
     height: 3em;
