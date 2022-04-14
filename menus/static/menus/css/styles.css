@@ -24,7 +24,7 @@
 
 html {
     width: var(--width-size);
-    height: var(--height-size);
+    height: 100%;
 }
 
 h1, h2, h3, p, a, ul, li {
@@ -228,14 +228,13 @@ footer p {
 /* brand_list */
 .wrap {
     width: var(--width-size);
-    height: var(--body-size);
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: var(--header-size);
-    padding-bottom: var(--footer-size);
     z-index: 0;
-    overflow: scroll;
+    margin-top: var(--header-size);
+    margin-bottom: var(--footer-size);
 }
 
 .page-title {
@@ -475,7 +474,7 @@ footer p {
     position: fixed;
     z-index: 1;
     bottom: calc(var(--footer-size) + 2.5em);
-    left: var(--width-size);
+    right: 1.5em;
     opacity: 70%;
     width: 3em;
     height: 3em;
