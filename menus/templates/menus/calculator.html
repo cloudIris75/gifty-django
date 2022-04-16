@@ -6,11 +6,10 @@
 <script src={% static 'menus/js/counter.js' %}?ver=0.2111 defer></script>
 <script src={% static 'menus/js/result.js' %}?ver=0.22 defer></script>
 <script src={% static 'menus/js/menu.js' %}?ver=1.22111 defer></script>
-<script src={% static 'menus/js/button.js' %}?ver=0.1111 defer></script>
 {% endblock script %}
 
 {% block content %}
-<div class="wrap" id="wrap">
+<div class="wrap">
     <h2 class="page-title">계산기</h2>
     <form class="form" id="form" method="post" action={% url 'calculator' %} onchange="this.submit();">
         {% csrf_token %}

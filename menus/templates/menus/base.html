@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,10 +11,11 @@
         <meta property="og:description" content="기프티콘 사용할 때, 돈 계산 어려우세요?">
         <link rel="icon" href={% static 'menus/images/calculator.png' %}>
         <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
-        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=0.331111111111>
+        <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=0.4>
         <title>기프티콘 계산기</title>
         <script src={% static 'menus/js/hamburger.js' %}?ver=0.2 defer></script>
         <script src={% static 'menus/js/sidebar.js' %}?ver=0.2 defer></script>
+        <script src={% static 'menus/js/button.js' %}?ver=0.2 defer></script>
         {% block script %}
         {% endblock script %}
     </head>

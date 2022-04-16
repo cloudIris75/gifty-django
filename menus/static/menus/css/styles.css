@@ -473,8 +473,8 @@ footer p {
     align-items: center;
     position: fixed;
     z-index: 1;
-    bottom: calc(var(--footer-size) + 2.5em);
-    left: var(--width-size);
+    bottom: 20%;
+    left: 85%;
     opacity: 70%;
     width: 3em;
     height: 3em;
