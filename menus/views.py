@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.core.exceptions import ValidationError
 from django.views.generic import TemplateView, ListView, View
 from django.db.models import Q
+from django.contrib import messages
 from menus.models import Brand, Gifticon, Menu
 
 class IndexTemplateView(TemplateView):
@@ -119,13 +119,16 @@ class Calculator(View):
                 try:
                     model.objects.get(name=name)
                 except:
-                    raise ValidationError('메뉴명을 확인해 주세요!')
+                    messages.error(request, '메뉴명을 확인해 주세요!')
 
         def item_price(model, name, count):
             global item
             global price
             if name:
-                item = model.objects.get(name=name)
+                try:
+                    item = model.objects.get(name=name)
+                except:
+                    messages.error(request, '메뉴명을 확인해 주세요!')
                 if count:
                     price = int(item.price) * int(count)
             else:

@@ -237,6 +237,27 @@ footer p {
     margin-bottom: var(--footer-size);
 }
 
+#messages {
+    /* visibility: hidden; */
+    margin-top: 1em;
+    padding: 0.5em 0em;
+    width: calc(var(--width-size) - 2em);
+    height: 1em;
+    background-color: white;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+#messages .error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* #messages.active {
+    visibility: visible;
+} */
+
 .page-title {
     font-size: 1.5em;
     margin-top: 0.8em;
