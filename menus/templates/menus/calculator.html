@@ -10,7 +10,7 @@
 
 {% block content %}
 <div class="wrap">
-    {% if messages %}
+    <!-- {% if messages %}
     <div id="messages">
         <ul>
             {% for message in messages %}
@@ -19,9 +19,9 @@
             </li>
             {% endfor %}
         </ul>
-        <!-- <p class="error">메뉴명을 확인해 주세요!</p> -->
+        <p class="error">메뉴명을 확인해 주세요!</p>
     </div>
-    {% endif %}
+    {% endif %} -->
 
     <h2 class="page-title">계산기</h2>
     <form class="form" id="form" method="post" action={% url 'calculator' %} onchange="this.submit();">

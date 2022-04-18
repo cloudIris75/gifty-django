@@ -116,19 +116,19 @@ class Calculator(View):
 
         def validate_name(model, name):
             if name and name != '':
-                try:
-                    model.objects.get(name=name)
-                except:
-                    messages.error(request, '메뉴명을 확인해 주세요!')
+                # try:
+                model.objects.get(name=name)
+                # except:
+                #     messages.error(request, '메뉴명을 확인해 주세요!')
 
         def item_price(model, name, count):
             global item
             global price
             if name:
-                try:
-                    item = model.objects.get(name=name)
-                except:
-                    messages.error(request, '메뉴명을 확인해 주세요!')
+                # try:
+                item = model.objects.get(name=name)
+                # except:
+                #     messages.error(request, '메뉴명을 확인해 주세요!')
                 if count:
                     price = int(item.price) * int(count)
             else:

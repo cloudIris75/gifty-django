@@ -237,8 +237,8 @@ footer p {
     margin-bottom: var(--footer-size);
 }
 
-#messages {
-    /* visibility: hidden; */
+/* #messages {
+    visibility: hidden;
     margin-top: 1em;
     padding: 0.5em 0em;
     width: calc(var(--width-size) - 2em);
@@ -254,7 +254,7 @@ footer p {
     text-align: center;
 }
 
-/* #messages.active {
+#messages.active {
     visibility: visible;
 } */
 
