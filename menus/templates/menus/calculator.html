@@ -10,19 +10,6 @@
 
 {% block content %}
 <div class="wrap">
-    <!-- {% if messages %}
-    <div id="messages">
-        <ul>
-            {% for message in messages %}
-            <li>
-                <p class="{{message.tags}}">{{message.message}}</p>
-            </li>
-            {% endfor %}
-        </ul>
-        <p class="error">메뉴명을 확인해 주세요!</p>
-    </div>
-    {% endif %} -->
-
     <h2 class="page-title">계산기</h2>
     <form class="form" id="form" method="post" action={% url 'calculator' %} onchange="this.submit();">
         {% csrf_token %}

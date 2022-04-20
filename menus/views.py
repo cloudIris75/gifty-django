@@ -222,3 +222,4 @@ class Calculator(View):
             return render(request, 'menus/calculator.html', data)
         except:
             return render(request, 'menus/error.html')
+            
