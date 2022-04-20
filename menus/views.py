@@ -116,19 +116,13 @@ class Calculator(View):
 
         def validate_name(model, name):
             if name and name != '':
-                # try:
                 model.objects.get(name=name)
-                # except:
-                #     messages.error(request, '메뉴명을 확인해 주세요!')
 
         def item_price(model, name, count):
             global item
             global price
             if name:
-                # try:
                 item = model.objects.get(name=name)
-                # except:
-                #     messages.error(request, '메뉴명을 확인해 주세요!')
                 if count:
                     price = int(item.price) * int(count)
             else:
@@ -136,92 +130,95 @@ class Calculator(View):
                 price = 0
             return item, price
 
-        item_list(Gifticon, id, gifticon_ct)
-        gifticon_list = name_list
-        validate_name(Gifticon, gifticon_name)
-        item_price(Gifticon, gifticon_name, gifticon_count)
-        gifticon_item = item
-        gifticon_price = price
+        try:
+            item_list(Gifticon, id, gifticon_ct)
+            gifticon_list = name_list
+            validate_name(Gifticon, gifticon_name)
+            item_price(Gifticon, gifticon_name, gifticon_count)
+            gifticon_item = item
+            gifticon_price = price
 
-        item_list(Menu, id, menu1_ct)
-        menu1_list = name_list
-        item_price(Menu, menu1_name, menu1_count)
-        menu1_item = item
-        menu1_price = price
+            item_list(Menu, id, menu1_ct)
+            menu1_list = name_list
+            item_price(Menu, menu1_name, menu1_count)
+            menu1_item = item
+            menu1_price = price
 
-        item_list(Menu, id, menu2_ct)
-        menu2_list = name_list
-        item_price(Menu, menu2_name, menu2_count)
-        menu2_item = item
-        menu2_price = price
+            item_list(Menu, id, menu2_ct)
+            menu2_list = name_list
+            item_price(Menu, menu2_name, menu2_count)
+            menu2_item = item
+            menu2_price = price
 
-        item_list(Menu, id, menu3_ct)
-        menu3_list = name_list
-        item_price(Menu, menu3_name, menu3_count)
-        menu3_item = item
-        menu3_price = price
+            item_list(Menu, id, menu3_ct)
+            menu3_list = name_list
+            item_price(Menu, menu3_name, menu3_count)
+            menu3_item = item
+            menu3_price = price
 
-        item_list(Menu, id, menu4_ct)
-        menu4_list = name_list
-        item_price(Menu, menu4_name, menu4_count)
-        menu4_item = item
-        menu4_price = price
+            item_list(Menu, id, menu4_ct)
+            menu4_list = name_list
+            item_price(Menu, menu4_name, menu4_count)
+            menu4_item = item
+            menu4_price = price
 
-        item_list(Menu, id, menu5_ct)
-        menu5_list = name_list
-        item_price(Menu, menu5_name, menu5_count)
-        menu5_item = item
-        menu5_price = price
+            item_list(Menu, id, menu5_ct)
+            menu5_list = name_list
+            item_price(Menu, menu5_name, menu5_count)
+            menu5_item = item
+            menu5_price = price
 
-        result = menu1_price + menu2_price + menu3_price + menu4_price + menu5_price
+            result = menu1_price + menu2_price + menu3_price + menu4_price + menu5_price
 
-        data = {
-            'brands': brands,
-            'id': int(id),
+            data = {
+                'brands': brands,
+                'id': int(id),
 
-            'gifticon_ct': gifticon_ct,
-            'gifticon_name': gifticon_name,
-            'gifticon_count': int(gifticon_count),
-            'gifticon_list': gifticon_list,
-            'gifticon_item': gifticon_item,
-            'gifticon_price': gifticon_price,
+                'gifticon_ct': gifticon_ct,
+                'gifticon_name': gifticon_name,
+                'gifticon_count': int(gifticon_count),
+                'gifticon_list': gifticon_list,
+                'gifticon_item': gifticon_item,
+                'gifticon_price': gifticon_price,
 
-            'menu1_ct': menu1_ct,
-            'menu1_name': menu1_name,
-            'menu1_count': int(menu1_count),
-            'menu1_list': menu1_list,
-            'menu1_item': menu1_item,
-            'menu1_price': menu1_price,
+                'menu1_ct': menu1_ct,
+                'menu1_name': menu1_name,
+                'menu1_count': int(menu1_count),
+                'menu1_list': menu1_list,
+                'menu1_item': menu1_item,
+                'menu1_price': menu1_price,
 
-            'menu2_ct': menu2_ct,
-            'menu2_name': menu2_name,
-            'menu2_count': int(menu2_count),
-            'menu2_list': menu2_list,
-            'menu2_item': menu2_item,
-            'menu2_price': menu2_price,
+                'menu2_ct': menu2_ct,
+                'menu2_name': menu2_name,
+                'menu2_count': int(menu2_count),
+                'menu2_list': menu2_list,
+                'menu2_item': menu2_item,
+                'menu2_price': menu2_price,
 
-            'menu3_ct': menu3_ct,
-            'menu3_name': menu3_name,
-            'menu3_count': int(menu3_count),
-            'menu3_list': menu3_list,
-            'menu3_item': menu3_item,
-            'menu3_price': menu3_price,
+                'menu3_ct': menu3_ct,
+                'menu3_name': menu3_name,
+                'menu3_count': int(menu3_count),
+                'menu3_list': menu3_list,
+                'menu3_item': menu3_item,
+                'menu3_price': menu3_price,
 
-            'menu4_ct': menu4_ct,
-            'menu4_name': menu4_name,
-            'menu4_count': int(menu4_count),
-            'menu4_list': menu4_list,
-            'menu4_item': menu4_item,
-            'menu4_price': menu4_price,
+                'menu4_ct': menu4_ct,
+                'menu4_name': menu4_name,
+                'menu4_count': int(menu4_count),
+                'menu4_list': menu4_list,
+                'menu4_item': menu4_item,
+                'menu4_price': menu4_price,
 
-            'menu5_ct': menu5_ct,
-            'menu5_name': menu5_name,
-            'menu5_count': int(menu5_count),
-            'menu5_list': menu5_list,
-            'menu5_item': menu5_item,
-            'menu5_price': menu5_price,
+                'menu5_ct': menu5_ct,
+                'menu5_name': menu5_name,
+                'menu5_count': int(menu5_count),
+                'menu5_list': menu5_list,
+                'menu5_item': menu5_item,
+                'menu5_price': menu5_price,
 
-            'result': result
-        }
-
-        return render(request, 'menus/calculator.html', data)
+                'result': result
+            }
+            
+            return render(request, 'menus/calculator.html', data)
+        except:
+            return render(request, 'menus/error.html')
