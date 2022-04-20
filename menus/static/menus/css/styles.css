@@ -8,8 +8,8 @@
     --border-size: 0.2em;
     --index-img-size: 9.375em;
     --brand-img-size: 7.5em;
-    --btn-width-size: 16em;
-    --btn-height-size: 2.5em;
+    --btn-width-size: 20em;
+    --btn-height-size: 2.75em;
 
     /* Color */
     --main-color: #6558F5;
@@ -43,13 +43,15 @@ img {
 }
 
 button {
+    width: var(--btn-width-size);
+    height: var(--btn-height-size);
     background-color: white;
     border: 1px solid var(--main-color);
     border-radius: 5px;
 }
 
 button a {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: var(--main-color);
 }
 
@@ -177,8 +179,6 @@ body .menu li a.active {
 }
 
 .introduction button {
-    width: var(--btn-width-size);
-    height: var(--btn-height-size);
     margin-top: 2em;
 }
 
@@ -500,7 +500,5 @@ footer p {
 }
 
 .option button {
-    width: var(--btn-width-size);
-    height: var(--btn-height-size);
     margin-bottom: 0.75em;
 }
