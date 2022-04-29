@@ -13,7 +13,6 @@
 
     /* Color */
     --main-color: #FEB131;
-    /* --border-color: #9EADBA; */
     --border-color: #BF9F78;
     --font-color: #242730;
 }
@@ -281,7 +280,7 @@ footer p {
 }
 
 .item-container .name {
-    width: var(--brand-img-size);
+    width: 120px;
     height: 2.5em;
     font-size: 0.8em;
     text-align: center;
