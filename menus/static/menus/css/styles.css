@@ -12,9 +12,10 @@
     --btn-height-size: 2.75em;
 
     /* Color */
-    /* --main-color: #6558F5; */
-    --main-color: #FFB300;
-    --border-color: #9EADBA;
+    --main-color: #FEB131;
+    /* --border-color: #9EADBA; */
+    --border-color: #BF9F78;
+    --font-color: #242730;
 }
 
 * {
@@ -29,7 +30,7 @@ html {
 }
 
 h1, h2, h3, p, a, ul, li {
-    color: black;
+    color: var(--font-color);
     list-style: none;
     text-decoration: none;
     outline: none;
@@ -86,14 +87,14 @@ header {
 }
 
 header .hamburger {
-    width: 2.3em;
-    height: 2.3em;
+    width: 2.5em;
+    height: 2.5em;
     margin-left: 1em;
 }
 
 header .hamburger img {
-    width: 2.3em;
-    height: 2.3em;
+    width: 2.5em;
+    height: 2.5em;
 }
 
 header .logo {
@@ -183,6 +184,10 @@ body .menu li a.active {
     margin-top: 2em;
 }
 
+#error-msg p {
+    color: var(--main-color);
+}
+
 footer {
     height: var(--footer-size);
     width: var(--width-size);
@@ -243,6 +248,7 @@ footer p {
 }
 
 .page-title {
+    color: var(--main-color);
     font-size: 1.5em;
     margin-top: 0.8em;
 }
@@ -401,7 +407,6 @@ footer p {
 
 .message {
     margin-top: 1em;
-    font-weight: bold;
     color: var(--main-color);
 }
 
@@ -426,7 +431,8 @@ footer p {
 .result p {
     visibility: hidden;
     font-size: 0.8em;
-    color: red;
+    font-weight: bold;
+    color: #CF6655;
     text-align: right;
 }
 
@@ -469,6 +475,7 @@ footer p {
 
 .result #result {
     font-size: 1em;
+    font-weight: normal;
     color: var(--main-color);
 }
 
