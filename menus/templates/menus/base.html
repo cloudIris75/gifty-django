@@ -6,9 +6,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:image" content={% static 'menus/images/logo.png' %}>
         <meta property="og:title" content="GIFTY">
         <meta property="og:description" content="기프티콘 사용할 때, 돈 계산 어려우세요?">
+        <meta property="og:image" content={% static 'menus/images/logo.png' %}>
+        <meta property="og:url" content="https://www.gifty.swygbro.com">
+        <meta name="twitter:card" content="summary">
         <link rel="icon" href={% static 'menus/images/icons/favicon.ico' %}>
         <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
         <link rel="stylesheet" href={% static 'menus/css/styles.css' %}?ver=1.12>
@@ -18,6 +20,15 @@
         <script src={% static 'menus/js/button.js' %}?ver=0.2 defer></script>
         {% block script %}
         {% endblock script %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8YSHG7P1T"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-G8YSHG7P1T');
+        </script>
     </head>
 
     <header>
